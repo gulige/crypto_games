@@ -1,0 +1,32 @@
+{
+    [
+        '../src/deps/ibrowse/src/*',
+        '../src/deps/cowboy/src/*',
+        '../src/deps/cowlib/src/*',
+        '../src/deps/ranch/src/*',
+        '../src/deps/jiffy/src/*',
+        '../src/deps/recon_web/src/*',
+        '../src/deps/jsx/src/*',
+        '../src/deps/recon/src/*',
+        '../src/deps/json/src/*',
+        '../src/deps/jsonrpc2/src/*',
+        '../src/*',
+        '../src/lib/*'
+    ]
+    ,[
+        debug_info
+        ,encrypt_debug_info
+        ,{parse_transform, lager_transform}
+        ,{lager_truncation_size, 1024}
+        ,{i, "../include"}
+        ,{i, "../src/deps/ibrowse/include"}
+        ,{i, "../src/deps/cowlib/include"}
+        ,{i, "../src/deps/recon_web/include"}
+        ,{outdir, "../ebin"}
+        ,{d, debug}
+        ,nowarn_unused_function
+        ,nowarn_unused_vars
+        %,native
+        %,{hipe, [to_llvm]}
+    ]
+}.

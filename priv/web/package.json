@@ -1,0 +1,6 @@
+{
+	"name": "eat_chicken",
+	"dependencies": {
+		"eosjs": "^16.0.9"
+	}
+}

@@ -61,13 +61,16 @@ socket.on("connect", function () {
     });
 });
 
-
-Eos = require('eosjs')
+chain = {
+    main: 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906', // main network
+    jungle: '038f4b0fc8ff18a4f0842a8f0564611f6e96e8535901dd45e43ac8691a1c4dca', // jungle testnet
+    dev: 'cf057bbfb72640471fd910bcb67639c22df9f92470936cddc1ade0e2f2e7dc4f' // local developer
+}
 
 config = {
     keyProvider: ['5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3'], // 配置私钥字符串
     httpEndpoint: 'http://114.115.135.201:8888', // EOS开发链url与端口
-    chainId: "cf057bbfb72640471fd910bcb67639c22df9f92470936cddc1ade0e2f2e7dc4f", // 通过cleos get info可以获取chainId
+    chainId: chain.dev, // 通过cleos get info可以获取chainId
     mockTransactions: () => null, // 如果要广播，需要设为null
     transactionHeaders: (expireInSeconds, callback) => {
         callback(null/*error*/, headers) // 手动设置交易记录头，该方法中的callback回调函数每次交易都会被调用

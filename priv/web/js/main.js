@@ -49,7 +49,9 @@ function create_account()
                 stake_cpu_quantity: '1.0000 EOS',
                 transfer: 0
             })
-        })
+        }).then((resp) => {
+            $("#message_create_account_name").html(resp);
+        });
     }
 }
 
@@ -71,15 +73,10 @@ config = {
     keyProvider: ['5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3'], // 配置私钥字符串
     httpEndpoint: 'http://114.115.135.201:8888', // EOS开发链url与端口
     chainId: chain.dev, // 通过cleos get info可以获取chainId
-    mockTransactions: () => null, // 如果要广播，需要设为null
-    transactionHeaders: (expireInSeconds, callback) => {
-        callback(null/*error*/, headers) // 手动设置交易记录头，该方法中的callback回调函数每次交易都会被调用
-    },
     expireInSeconds: 60,
     broadcast: true,
     debug: false,
-    sign: true,
-    authorization: null // 该参数用于在多签名情况下，识别签名帐号与权限，格式如：account@permission
+    sign: true
 }
 
 eos = Eos(config)

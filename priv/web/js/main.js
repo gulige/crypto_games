@@ -50,7 +50,40 @@ function create_account()
                 transfer: 0
             })
         }).then((resp) => {
-            $("#message_create_account_name").html(resp);
+            $("#message_create_account").html(resp);
+        });
+    }
+}
+
+function create_game()
+{
+    var creatorName = document.getElementById("creator_name").value;
+    var joinEos = document.getElementById("join_eos").value;
+
+    if (creatorName == "") {
+        alert("Please input creator name");
+    } else {
+        eos.transaction(
+            {
+                actions: [
+                    {
+                        account: 'eosio.token',
+                        name: 'transfer',
+                        authorization: [{
+                            actor: creatorName,
+                            permission: 'active'
+                        }],
+                        data: {
+                            from: creatorName,
+                            to: 'eat.chicken',
+                            quantity: joinEos,
+                            memo: ''
+                        }
+                    }
+                ]
+            }
+        ).then((resp) => {
+            $("#message_create_game").html(resp);
         });
     }
 }
@@ -70,7 +103,9 @@ chain = {
 }
 
 config = {
-    keyProvider: ['5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3'], // 配置私钥字符串
+    keyProvider: ['5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3', // eosio
+                  '5KRF8dr2fvHx9dVQyBqWwYhs7KvT8UdCb8Fy6hpWqHp6yZ1K6T3' // player1
+                ], // 配置私钥字符串
     httpEndpoint: 'http://114.115.135.201:8888', // EOS开发链url与端口
     chainId: chain.dev, // 通过cleos get info可以获取chainId
     expireInSeconds: 60,

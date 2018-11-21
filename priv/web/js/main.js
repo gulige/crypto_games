@@ -50,7 +50,7 @@ function create_account()
                 transfer: 0
             })
         }).then((resp) => {
-            $("#message_create_account").html(resp);
+            $("#message_create_account").html(JSON.stringify(resp));
         });
     }
 }
@@ -83,8 +83,44 @@ function create_game()
                 ]
             }
         ).then((resp) => {
-            $("#message_create_game").html(resp);
+            $("#message_create_game").html(JSON.stringify(resp));
         });
+    }
+}
+
+function game_info()
+{
+    var gameIdStr = document.getElementById("game_id").value;
+    if (gameIdStr == "") {
+        alert("Please input game id");
+    } else {
+        var gameId = parseInt(gameIdStr);
+        if (gameId >= 0) {
+            eos.getTableRows(
+                {
+                    json: true,
+                    scope: "eat.chicken",
+                    code: "eat.chicken",
+                    table: "games",
+                    limit:1,
+                    lower_bound: gameId,
+                    upper_bound: gameId + 1
+                }
+            ).then((resp) => {
+                $("#message_game_info").html(JSON.stringify(resp));
+            });
+        } else {
+            eos.getTableRows(
+                {
+                    json: true,
+                    scope: "eat.chicken",
+                    code: "eat.chicken",
+                    table: "games"
+                }
+            ).then((resp) => {
+                $("#message_game_info").html(JSON.stringify(resp));
+            });
+        }
     }
 }
 
@@ -104,7 +140,7 @@ chain = {
 
 config = {
     keyProvider: ['5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3', // eosio
-                  '5KRF8dr2fvHx9dVQyBqWwYhs7KvT8UdCb8Fy6hpWqHp6yZ1K6T3' // player1
+                  '5KRF8dr2fvHx9dVQyBqWwYhs7KvT8UdCb8Fy6hpWqHp6yZ1K6T3' // player1, player2
                 ], // 配置私钥字符串
     httpEndpoint: 'http://114.115.135.201:8888', // EOS开发链url与端口
     chainId: chain.dev, // 通过cleos get info可以获取chainId

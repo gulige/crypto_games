@@ -42,9 +42,13 @@ action(<<"GET">>, <<"setmap">> = Action, Req) ->
         false -> void
     end,
     GameId = binary_to_integer(GameIdBin),
-    lib_eat_chicken:set_map(GameId),
-    % start tick
-    {ok, #{}};
+    case lib_eat_chicken:set_map(GameId) of
+        {error, Res} ->
+            throw({200, ?ERRNO_HTTP_REQ_SERVER_LOGIC, Res});
+        _ ->
+            % start tick
+            {ok, #{}}
+    end;
 
 action(_, _Action, _Req) ->
     throw({200, ?ERRNO_ACTION_NOT_SUPPORT, <<"Action not supported">>}).

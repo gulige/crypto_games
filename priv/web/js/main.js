@@ -51,6 +51,8 @@ function create_account()
             })
         }).then((resp) => {
             $("#message_create_account").html(JSON.stringify(resp));
+        }).catch(err => {
+            $("#message_create_account").html(JSON.stringify(err));
         });
     }
 }
@@ -84,6 +86,8 @@ function create_game()
             }
         ).then((resp) => {
             $("#message_create_game").html(JSON.stringify(resp));
+        }).catch(err => {
+            $("#message_create_game").html(JSON.stringify(err));
         });
     }
 }
@@ -108,6 +112,8 @@ function game_info()
                 }
             ).then((resp) => {
                 $("#message_game_info").html(JSON.stringify(resp));
+            }).catch(err => {
+                $("#message_game_info").html(JSON.stringify(err));
             });
         } else {
             eos.getTableRows(
@@ -119,6 +125,8 @@ function game_info()
                 }
             ).then((resp) => {
                 $("#message_game_info").html(JSON.stringify(resp));
+            }).catch(err => {
+                $("#message_game_info").html(JSON.stringify(err));
             });
         }
     }

@@ -44,7 +44,7 @@ action(<<"GET">>, <<"setmap">> = Action, Req) ->
     GameId = binary_to_integer(GameIdBin),
     case lib_eat_chicken:set_map(GameId) of
         {error, Res} ->
-            throw({200, ?ERRNO_HTTP_REQ_SERVER_LOGIC, Res});
+            throw({200, ?ERRNO_HTTP_REQ_SERVER_LOGIC, ?T2B(Res)});
         _ ->
             % start tick
             {ok, #{}}

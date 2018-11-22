@@ -13,7 +13,7 @@
          get_block/1,
          get_tx/1,
          import_priv_key/1,
-         call_contract/1]).
+         call_contract/4]).
 
 -include("common.hrl").
 
@@ -22,7 +22,7 @@
 -define(FACTOR, 1).
 
 -define(WALLET_NAME, <<"game">>).
--define(ACCOUNT_NAME, <<"tester">>).
+-define(ACCOUNT_NAME, <<"bitgame12345">>).
 
 -define(HTTP_REQUEST_TIMEOUT, 60000 * 10).
 -define(JSON_CONTENT, {"Content-Type", "application/json; charset=utf8"}).
@@ -264,8 +264,16 @@ get_tx(TxId) ->
             end
     end.
 
-call_contract(_) ->
-    ok.
+call_contract(Contract, Action, Args, Executor) ->
+    CmdBin = <<"cleos --wallet-url http://127.0.0.1:8900 push action ", Contract/binary, " ", Action/binary, " '", Args/binary, "' -p ", Executor/binary>>,
+    Res = os:cmd(binary_to_list(CmdBin)),
+    case string:tokens(Res, " ") of
+        ["executed", "transaction:", TxId | _] ->
+            list_to_binary(TxId);
+        [_, Code | _] when Code =:= "3120002:"; Code =:= "3120003:"; Code =:= "3120004:" ->
+            make_sure_usable(),
+            call_contract(Contract, Action, Args, Executor)
+    end.
 
 get_amount_and_symbol(Amount0) ->
     [Amount, Symbol] = binary:split(Amount0, <<" ">>),

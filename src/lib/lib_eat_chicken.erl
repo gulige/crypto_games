@@ -4,7 +4,7 @@
 %%%--------------------------------------
 
 -module(lib_eat_chicken).
--export([set_map/1, kick_off/1]).
+-export([set_map/1]).
 -export([gen_map/0]).
 
 -define(BOARD_SIZE, 11 * 11).
@@ -54,6 +54,3 @@ gen_map() ->
                  end
          end || I <- lists:seq(1, ?BOARD_SIZE)],
     lists:unzip(L).
-
-kick_off(GameId) ->
-    ok.

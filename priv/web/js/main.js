@@ -132,6 +132,19 @@ function game_info()
     }
 }
 
+function set_map()
+{
+    var gameIdStr = document.getElementById("set_game_id").value;
+    if (gameIdStr == "") {
+        alert("Please input game id");
+    } else {
+        var gameId = parseInt(gameIdStr);
+        $.get("/api?a=setmap&game_id=" + gameIdStr, function(data){
+            $("#message_set_map").html(data);
+        });
+    }
+}
+
 var socket = io("http://114.115.135.201:52919");
 
 socket.on("connect", function () {

@@ -30,7 +30,7 @@ init(Req, Opts) ->
 action(_, undefined, _Req) ->
     throw({200, ?ERRNO_MISSING_PARAM, <<"Missing parameter">>});
 
-% https://api.eatchicken.com/?a=setmap&game_id=xxx
+% https://www.eatchicken.com/api/?a=setmap&game_id=xxx
 action(<<"GET">>, <<"setmap">> = Action, Req) ->
     ParamsMap = cowboy_req:match_qs([game_id], Req),
     ?DBG("setmap: ~p~n", [ParamsMap]),
@@ -43,21 +43,7 @@ action(<<"GET">>, <<"setmap">> = Action, Req) ->
     end,
     GameId = binary_to_integer(GameIdBin),
     lib_eat_chicken:set_map(GameId),
-    {ok, #{}};
-
-% https://api.eatchicken.com/?a=kickoff&game_id=xxx
-action(<<"GET">>, <<"kickoff">> = Action, Req) ->
-    ParamsMap = cowboy_req:match_qs([game_id], Req),
-    ?DBG("kickoff: ~p~n", [ParamsMap]),
-    #{game_id := GameIdBin0} = ParamsMap,
-    L = [GameIdBin0],
-    [GameIdBin] = [util:trim(One) || One <- L],
-    case lists:member(<<>>, [GameIdBin]) of
-        true -> throw({200, ?ERRNO_MISSING_PARAM, <<"Missing parameter">>});
-        false -> void
-    end,
-    GameId = binary_to_integer(GameIdBin),
-    lib_eat_chicken:kick_off(GameId),
+    % start tick
     {ok, #{}};
 
 action(_, _Action, _Req) ->

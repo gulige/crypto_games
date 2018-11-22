@@ -10,9 +10,15 @@
 -define(BOARD_SIZE, 11 * 11).
 
 set_map(GameId) ->
+    GameIdBin = integer_to_binary(GameId),
     {Items, DropTicks} = gen_map(),
-    % todo
-    jiffy:encode(#{items => Items, drop_ticks => DropTicks}).
+    ItemsBin = jiffy:encode(Items),
+    DropTicksBin = jiffy:encode(DropTicks),
+    chain_eos:call_contract(
+      <<"eat.chicken">>,
+      <<"setmap">>,
+      <<"[ \"eat.chicken\", ", GameIdBin/binary, ", ", ItemsBin/binary, ", ", DropTicksBin/binary, " ]">>,
+      <<"eat.chicken">>).
 
 % 生成地图，实际上就是随机生成道具分布
 % 0.   无

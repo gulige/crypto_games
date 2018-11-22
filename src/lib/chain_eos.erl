@@ -272,7 +272,9 @@ call_contract(Contract, Action, Args, Executor) ->
             list_to_binary(TxId);
         [_, Code | _] when Code =:= "3120002:"; Code =:= "3120003:"; Code =:= "3120004:" ->
             make_sure_usable(),
-            call_contract(Contract, Action, Args, Executor)
+            call_contract(Contract, Action, Args, Executor);
+        [_, Code | _] ->
+            {error, Res}
     end.
 
 get_amount_and_symbol(Amount0) ->

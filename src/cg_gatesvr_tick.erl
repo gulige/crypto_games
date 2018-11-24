@@ -36,6 +36,7 @@ handle_call(_R, _FROM, Status) ->
 handle_info(to_process, #status{game = Game, game_id = GameId} = Status) ->
     case catch lib_tick:do_game(Game, GameId) of
         stop ->
+            ?DBG("game ~s(~s) terminating...~n", [Game, GameId]),
             {stop, normal, Status};
         _ ->
             erlang:send_after(?PROCESS_INTERVAL, self(), to_process),
@@ -45,7 +46,8 @@ handle_info(to_process, #status{game = Game, game_id = GameId} = Status) ->
 handle_info(_Info, Status) ->
     {noreply, Status}.
 
-terminate(_Reason, Status) ->
+terminate(_Reason, #status{game = Game, game_id = GameId} = Status) ->
+    ?DBG("game ~s(~s) terminated~n", [Game, GameId]),
     {ok, Status}.
 
 code_change(_OldVsn, Status, _Extra) ->

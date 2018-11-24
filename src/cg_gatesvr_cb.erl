@@ -47,6 +47,7 @@ action(<<"GET">>, <<"setmap">> = Action, Req) ->
             throw({200, ?ERRNO_HTTP_REQ_SERVER_LOGIC, ?T2B_P(Res)});
         _ ->
             % start tick
+            lib_tick:start_one_tick_worker(<<"eat_chicken">>, GameId),
             {ok, #{}}
     end;
 

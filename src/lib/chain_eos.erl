@@ -13,7 +13,8 @@
          get_block/1,
          get_tx/1,
          import_priv_key/1,
-         call_contract/4]).
+         call_contract/4,
+         get_table/6]).
 
 -include("common.hrl").
 
@@ -264,19 +265,6 @@ get_tx(TxId) ->
             end
     end.
 
-call_contract(Contract, Action, Args, Executor) ->
-    CmdBin = <<"cleos --wallet-url http://127.0.0.1:8900 push action ", Contract/binary, " ", Action/binary, " '", Args/binary, "' -p ", Executor/binary>>,
-    Res = os:cmd(binary_to_list(CmdBin)),
-    case string:tokens(Res, " ") of
-        ["executed", "transaction:", TxId | _] ->
-            list_to_binary(TxId);
-        [_, Code | _] when Code =:= "3120002:"; Code =:= "3120003:"; Code =:= "3120004:" ->
-            make_sure_usable(),
-            call_contract(Contract, Action, Args, Executor);
-        [_, Code | _] ->
-            {error, Res}
-    end.
-
 get_amount_and_symbol(Amount0) ->
     [Amount, Symbol] = binary:split(Amount0, <<" ">>),
     case Symbol of
@@ -291,6 +279,30 @@ get_new_key() ->
     % key type: R1 curve (iPhone), K1 curve (Bitcoin)
     {ok, PubKey} = http_request(<<"wallet/create_key">>, [?WALLET_NAME, <<"K1">>]),
     PubKey.
+
+call_contract(Contract, Action, Args, Executor) ->
+    CmdBin = <<"cleos --wallet-url http://127.0.0.1:8900 push action ", Contract/binary, " ", Action/binary, " '", Args/binary, "' -p ", Executor/binary>>,
+    ?DBG("call_contract: cmd=~s~n", [CmdBin]),
+    Res = os:cmd(binary_to_list(CmdBin)),
+    case string:tokens(Res, " ") of
+        ["executed", "transaction:", TxId | _] ->
+            list_to_binary(TxId);
+        [_, Code | _] when Code =:= "3120002:"; Code =:= "3120003:"; Code =:= "3120004:" ->
+            make_sure_usable(),
+            call_contract(Contract, Action, Args, Executor);
+        [_, Code | _] ->
+            {error, Res}
+    end.
+
+get_table(Contract, Executor, Table, Key, Lower, Limit) ->
+    LowerBin = integer_to_binary(Lower),
+    LimitBin = integer_to_binary(Limit),
+    UpperBin = integer_to_binary(Lower + Limit),
+    CmdBin = <<"cleos get table ", Contract/binary, " ", Executor/binary, " ", Table/binary, " -k ", Key/binary, " -L ", LowerBin/binary, " -U ", UpperBin/binary, " -l ", LimitBin/binary>>,
+    ?DBG("get_table: cmd=~s~n", [CmdBin]),
+    Res = os:cmd(binary_to_list(CmdBin)),
+    #{<<"rows">> := Rows, <<"more">> := false} = jiffy:decode(Res, [return_maps]),
+    Rows.
 
 get_http_url(IsPub) ->
     {ok, CfgList} = application:get_env(gatesvr, jsonrpc_eos),

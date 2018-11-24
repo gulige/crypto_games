@@ -4,11 +4,16 @@
 %%%--------------------------------------
 -module(lib_tick).
 
--export([start_one_tick_worker/2, do_game/2]).
+-export([start_tick_workers/0, start_one_tick_worker/2, do_game/2]).
 
 -include("common.hrl").
 
-% lib_tick:start_one_tick_worker(<<"eat_chicken">>, 1).
+start_tick_workers() ->
+    case chain_eos:get_table(<<"eat.chicken">>, <<"eat.chicken">>, <<"games">>, <<"game_id">>, 0, -1) of
+        [] -> void;
+        L -> void
+    end.
+
 start_one_tick_worker(Game, GameId) ->
     {ok, _} = supervisor:start_child(cg_gatesvr_tick_sup, [Game, GameId]),
     ?INFO("tick worker started for game: ~s, game_id=~p~n", [Game, GameId]),
@@ -17,7 +22,17 @@ start_one_tick_worker(Game, GameId) ->
 do_game(Game, GameId) ->
     ?DBG("processing tick for game ~s, game_id=~p...~n", [Game, GameId]),
     try
-        ok
+        GameIdBin = integer_to_binary(GameId),
+        case chain_eos:call_contract(
+                <<"eat.chicken">>,
+                <<"tick">>,
+                <<"[ \"eat.chicken\", ", GameIdBin/binary, " ]">>,
+                <<"eat.chicken">>) of
+            {error, Res} ->
+                stop;
+            _ ->
+                continue
+        end
     catch
         throw:ThrownErr ->
             ThrownErr;

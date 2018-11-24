@@ -15,10 +15,10 @@ set_map(GameId) ->
     ItemsBin = jiffy:encode(Items),
     DropTicksBin = jiffy:encode(DropTicks),
     chain_eos:call_contract(
-      <<"eat.chicken">>,
-      <<"setmap">>,
-      <<"[ \"eat.chicken\", ", GameIdBin/binary, ", ", ItemsBin/binary, ", ", DropTicksBin/binary, " ]">>,
-      <<"eat.chicken">>).
+        <<"eat.chicken">>,
+        <<"setmap">>,
+        <<"[ \"eat.chicken\", ", GameIdBin/binary, ", ", ItemsBin/binary, ", ", DropTicksBin/binary, " ]">>,
+        <<"eat.chicken">>).
 
 % 生成地图，实际上就是随机生成道具分布
 % 0.   无

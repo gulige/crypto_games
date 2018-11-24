@@ -34,9 +34,13 @@ handle_call(_R, _FROM, Status) ->
     {reply, ok, Status}.
 
 handle_info(to_process, #status{game = Game, game_id = GameId} = Status) ->
-    catch lib_tick:do_game(Game, GameId),
-    erlang:send_after(?PROCESS_INTERVAL, self(), to_process),
-    {noreply, Status};
+    case catch lib_tick:do_game(Game, GameId) of
+        stop ->
+            {stop, normal, Status};
+        _ ->
+            erlang:send_after(?PROCESS_INTERVAL, self(), to_process),
+            {noreply, Status}
+    end;
 
 handle_info(_Info, Status) ->
     {noreply, Status}.

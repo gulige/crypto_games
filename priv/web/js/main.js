@@ -145,6 +145,54 @@ function set_map()
     }
 }
 
+function join_game()
+{
+    var joinerName = document.getElementById("joiner_name").value;
+    var joinXStr = document.getElementById("join_x").value;
+    var joinYStr = document.getElementById("join_y").value;
+    var transferEos = document.getElementById("transfer_eos").value;
+    var gameIdStr = document.getElementById("join_game_id").value;
+
+    if (joinerName == "") {
+        alert("Please input joiner name");
+        return;
+    }
+
+    if (gameIdStr == "") {
+        alert("Please input game id");
+        return;
+    }
+
+    var gameId = parseInt(gameIdStr);
+    var joinX = parseInt(joinXStr);
+    var joinY = parseInt(joinYStr);
+
+    eos.transaction(
+        {
+            actions: [
+                {
+                    account: 'eosio.token',
+                    name: 'transfer',
+                    authorization: [{
+                        actor: joinerName,
+                        permission: 'active'
+                    }],
+                    data: {
+                        from: joinerName,
+                        to: 'eat.chicken',
+                        quantity: transferEos,
+                        memo: gameIdStr + ',' + joinXStr + ',' + joinYStr
+                    }
+                }
+            ]
+        }
+    ).then((resp) => {
+        $("#message_join_game").html(JSON.stringify(resp));
+    }).catch(err => {
+        $("#message_join_game").html(JSON.stringify(err));
+    });
+}
+
 var socket = io("http://114.115.135.201:52919");
 
 socket.on("connect", function () {

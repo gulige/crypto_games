@@ -31,7 +31,7 @@ init([]) ->
     {ok, { {simple_one_for_one, 3, 10},
            [{cg_gatesvr_tick,
              {cg_gatesvr_tick, start_link, []},
-             permanent,
+             transient,
              10000,
              worker,
              [cg_gatesvr_tick]}]}}.

@@ -4,8 +4,7 @@
 %%%--------------------------------------
 
 -module(lib_eat_chicken).
--export([set_map/1]).
--export([gen_map/0]).
+-compile(export_all).
 
 -define(BOARD_SIZE, 11 * 11).
 
@@ -54,3 +53,21 @@ gen_map() ->
                  end
          end || I <- lists:seq(1, ?BOARD_SIZE)],
     lists:unzip(L).
+
+start_tick_workers() ->
+    case chain_eos:get_table(<<"eat.chicken">>, <<"eat.chicken">>, <<"games">>, <<"game_id">>, 0, -1) of
+        [] -> void;
+        L ->
+            [lib_tick:start_one_tick_worker(<<"eat_chicken">>, GameId) ||
+               #{<<"game_id">> := GameId, <<"game_progress">> := Progress} <- L,
+               Progress =:= 1 orelse Progress =:= 2]
+    end.
+
+do_tick(GameId) ->
+    GameIdBin = integer_to_binary(GameId),
+    chain_eos:call_contract(
+        <<"eat.chicken">>,
+        <<"tick">>,
+        <<"[ \"eat.chicken\", ", GameIdBin/binary, " ]">>,
+        <<"eat.chicken">>).
+

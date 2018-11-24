@@ -32,4 +32,5 @@ start_tick_sup() ->
                 {cg_gatesvr_tick_sup,
                 {cg_gatesvr_tick_sup, start_link, []},
                 permanent, 10000, supervisor, [cg_gatesvr_tick_sup]}),
+    lib_tick:start_tick_workers(<<"eat_chicken">>),
     ok.

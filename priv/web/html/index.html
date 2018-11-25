@@ -119,6 +119,27 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-6 offset-md-3 text-xs-center">
+                    <br>
+                    <h3>kick off</h3>
+                    <br>
+                    <div>
+                        <div class="form-group">
+                            <label for="kick_requester_name">Enter requester name</label>
+                            <input type="text" class="form-control" id="kick_requester_name">
+                        </div>
+                        <div class="form-group">
+                            <label for="kick_game_id">Enter game id</label>
+                            <input type="text" class="form-control" id="kick_game_id">
+                        </div>
+                        <button onclick="kick_off()" class="btn btn-primary">Kick Off</button>
+                        <br><br>
+                        <div class="alert alert-info text-xs-left" role="alert" id="message_kick_off">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <script type="text/javascript" src="/js/sha1.min.js"></script>
         <script type="text/javascript" src="/js/jquery.min.js"></script>

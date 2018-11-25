@@ -193,6 +193,47 @@ function join_game()
     });
 }
 
+function kick_off()
+{
+    var requesterName = document.getElementById("kick_requester_name").value;
+    var gameIdStr = document.getElementById("kick_game_id").value;
+
+    if (requesterName == "") {
+        alert("Please input requester name");
+        return;
+    }
+
+    if (gameIdStr == "") {
+        alert("Please input game id");
+        return;
+    }
+
+    var gameId = parseInt(gameIdStr);
+
+    eos.transaction(
+        {
+            actions: [
+                {
+                    account: 'eat.chicken',
+                    name: 'kickoff',
+                    authorization: [{
+                        actor: requesterName,
+                        permission: 'active'
+                    }],
+                    data: {
+                        who: requesterName,
+                        game_id: gameId
+                    }
+                }
+            ]
+        }
+    ).then((resp) => {
+        $("#message_kick_off").html(JSON.stringify(resp));
+    }).catch(err => {
+        $("#message_kick_off").html(JSON.stringify(err));
+    });
+}
+
 var socket = io("http://114.115.135.201:52919");
 
 socket.on("connect", function () {

@@ -234,6 +234,53 @@ function kick_off()
     });
 }
 
+function move()
+{
+    var requesterName = document.getElementById("move_requester_name").value;
+    var gameIdStr = document.getElementById("move_game_id").value;
+    var moveXStr = document.getElementById("move_x").value;
+    var moveYStr = document.getElementById("move_y").value;
+
+    if (requesterName == "") {
+        alert("Please input requester name");
+        return;
+    }
+
+    if (gameIdStr == "") {
+        alert("Please input game id");
+        return;
+    }
+
+    var gameId = parseInt(gameIdStr);
+    var moveX = parseInt(moveXStr);
+    var moveY = parseInt(moveYStr);
+
+    eos.transaction(
+        {
+            actions: [
+                {
+                    account: 'eat.chicken',
+                    name: 'move',
+                    authorization: [{
+                        actor: requesterName,
+                        permission: 'active'
+                    }],
+                    data: {
+                        who: requesterName,
+                        game_id: gameId,
+                        row: moveX,
+                        column: moveY
+                    }
+                }
+            ]
+        }
+    ).then((resp) => {
+        $("#message_move").html(JSON.stringify(resp));
+    }).catch(err => {
+        $("#message_move").html(JSON.stringify(err));
+    });
+}
+
 var socket = io("http://114.115.135.201:52919");
 
 socket.on("connect", function () {

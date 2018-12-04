@@ -10,20 +10,25 @@
 init(Req, Opts) ->
     Method = cowboy_req:method(Req),
     #{a := Action} = cowboy_req:match_qs([a], Req),
+    ReqCors =
+        case cg:env() of
+            ?ENV_PROD -> Req;
+            _ -> cowboy_req:set_resp_header(<<"access-control-allow-origin">>, <<$*>>, Req)
+        end,
     Req2 =
         try
             {ok, ResMap} = action(Method, Action, Req),
-            cowboy_req:reply(200, #{}, lib_http:reply_body_succ(ResMap), Req)
+            cowboy_req:reply(200, #{}, lib_http:reply_body_succ(ResMap), ReqCors)
         catch
             throw:{ErrNo, ErrMsg} when is_integer(ErrNo), is_binary(ErrMsg) ->
                 ?DBG("cg_gatesvr_cb throw(action=~p):~nerr_msg=~p~nstack=~p~n", [Action, {ErrNo, ErrMsg}, erlang:get_stacktrace()]),
-                cowboy_req:reply(200, #{}, lib_http:reply_body_fail(Action, ErrNo, ErrMsg), Req);
+                cowboy_req:reply(200, #{}, lib_http:reply_body_fail(Action, ErrNo, ErrMsg), ReqCors);
             throw:{HttpCode, ErrNo, ErrMsg} when is_integer(HttpCode), is_integer(ErrNo), is_binary(ErrMsg) ->
                 ?DBG("cg_gatesvr_cb throw(action=~p):~nerr_msg=~p~nstack=~p~n", [Action, {HttpCode, ErrNo, ErrMsg}, erlang:get_stacktrace()]),
-                cowboy_req:reply(HttpCode, #{}, lib_http:reply_body_fail(Action, ErrNo, ErrMsg), Req);
+                cowboy_req:reply(HttpCode, #{}, lib_http:reply_body_fail(Action, ErrNo, ErrMsg), ReqCors);
             _:ExceptionErr ->
                 ?ERR("cg_gatesvr_cb exception(action=~p):~nerr_msg=~p~nstack=~p~n", [Action, ExceptionErr, erlang:get_stacktrace()]),
-                cowboy_req:reply(200, #{}, lib_http:reply_body_fail(Action, ?ERRNO_EXCEPTION, ?T2B(ExceptionErr)), Req)
+                cowboy_req:reply(200, #{}, lib_http:reply_body_fail(Action, ?ERRNO_EXCEPTION, ?T2B(ExceptionErr)), ReqCors)
         end,
     {ok, Req2, Opts}.
 

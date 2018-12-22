@@ -1,0 +1,155 @@
+{
+	"groups": [
+		{
+			"keys": "bg_jpg,egret_icon_png,description_json,city_png,house_png,soilder_png,flat_png,sword_png,attack_png,defence_png,fight_png,fight_json,recall_png,ack_mp3,fighting_mp3,destroyhuman_wav,ack2_mp3,destroyhuman2_wav,fighting2_mp3,recall2_png,johny_soilder_png,kitty_soilder_png,peter_soilder_png,money_json,money_png,bg1_jpg,logout_png,login_png",
+			"name": "preload"
+		}
+	],
+	"resources": [
+		{
+			"url": "assets/bg.jpg",
+			"type": "image",
+			"name": "bg_jpg"
+		},
+		{
+			"url": "assets/egret_icon.png",
+			"type": "image",
+			"name": "egret_icon_png"
+		},
+		{
+			"url": "config/description.json",
+			"type": "json",
+			"name": "description_json"
+		},
+		{
+			"url": "assets/city.png",
+			"type": "image",
+			"name": "city_png"
+		},
+		{
+			"url": "assets/house.png",
+			"type": "image",
+			"name": "house_png"
+		},
+		{
+			"url": "assets/soilder.png",
+			"type": "image",
+			"name": "soilder_png"
+		},
+		{
+			"url": "assets/flat.png",
+			"type": "image",
+			"name": "flat_png"
+		},
+		{
+			"url": "assets/sword.png",
+			"type": "image",
+			"name": "sword_png"
+		},
+		{
+			"url": "assets/attack.png",
+			"type": "image",
+			"name": "attack_png"
+		},
+		{
+			"url": "assets/fight.gif",
+			"type": "image",
+			"name": "fight_gif"
+		},
+		{
+			"url": "assets/defence.png",
+			"type": "image",
+			"name": "defence_png"
+		},
+		{
+			"url": "assets/fight.png",
+			"type": "image",
+			"name": "fight_png"
+		},
+		{
+			"url": "config/fight.json",
+			"type": "json",
+			"name": "fight_json"
+		},
+		{
+			"name": "recall_png",
+			"type": "image",
+			"url": "assets/recall.png"
+		},
+		{
+			"name": "ack_mp3",
+			"type": "sound",
+			"url": "assets/ack.mp3"
+		},
+		{
+			"name": "fighting_mp3",
+			"type": "sound",
+			"url": "assets/fighting.mp3"
+		},
+		{
+			"name": "destroyhuman_wav",
+			"type": "sound",
+			"url": "assets/destroyhuman.wav"
+		},
+		{
+			"name": "ack2_mp3",
+			"type": "sound",
+			"url": "assets/ack.mp3"
+		},
+		{
+			"name": "destroyhuman2_wav",
+			"type": "sound",
+			"url": "assets/destroyhuman.wav"
+		},
+		{
+			"name": "fighting2_mp3",
+			"type": "sound",
+			"url": "assets/fighting.mp3"
+		},
+		{
+			"name": "recall2_png",
+			"type": "image",
+			"url": "assets/recall.png"
+		},
+		{
+			"name": "johny_soilder_png",
+			"type": "image",
+			"url": "assets/johny_soilder.png"
+		},
+		{
+			"name": "kitty_soilder_png",
+			"type": "image",
+			"url": "assets/kitty_soilder.png"
+		},
+		{
+			"name": "peter_soilder_png",
+			"type": "image",
+			"url": "assets/peter_soilder.png"
+		},
+		{
+			"name": "money_json",
+			"type": "json",
+			"url": "assets/money.json"
+		},
+		{
+			"name": "money_png",
+			"type": "image",
+			"url": "assets/money.png"
+		},
+		{
+			"name": "bg1_jpg",
+			"type": "image",
+			"url": "assets/bg1.jpg"
+		},
+		{
+			"name": "logout_png",
+			"type": "image",
+			"url": "assets/logout.png"
+		},
+		{
+			"name": "login_png",
+			"type": "image",
+			"url": "assets/login.png"
+		}
+	]
+}

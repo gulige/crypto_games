@@ -17,13 +17,13 @@ function ping()
 function create_account()
 {
     var newAccount = document.getElementById("create_account_name").value;
+    var newAccountPubKey = document.getElementById("create_account_pubkey").value; //新账号的公钥
 
     if (newAccount == "") {
         alert("Please input account name to create");
     } else {
         creatorAccount = "eosio" //主账号
-        newAccountPubkey = "EOS7wMezX9vY2wLz2DQLiJXCq9Kk7ei24PaEKhR6gJFewS32zTLKC" //新账号的公钥
-    
+
         // 构建transaction对象
         eos.transaction(tr => {
             // 新建账号

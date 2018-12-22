@@ -30,6 +30,7 @@ init([Port]) ->
     {ok, _} = cowboy:start_clear(http_listener, [{port, Port}], #{env => #{dispatch => Dispatch}}),
 
     Dispatch2 = cowboy_router:compile([{'_', [
+            {"/api", cg_gatesvr_cb, []},
             {"/", cowboy_static, {file, <<"../priv/web/html/index.html">>}},
             {"/[...]", cowboy_static, {dir, <<"../priv/web">>}}
         ]}

@@ -16,8 +16,6 @@ start_link(Port) ->
 init([Port]) ->
     Dispatch = cowboy_router:compile([{'_', [
             {"/api", cg_gatesvr_cb, []},
-            %{"/", cowboy_static, {file, <<"../priv/web/html/index.html">>}},
-            %{"/[...]", cowboy_static, {dir, <<"../priv/web">>}}
             {"/", cowboy_static, {file, <<"../priv/eat_chicken/index.html">>}},
             {"/[...]", cowboy_static, {dir, <<"../priv/eat_chicken">>}}
         ]}
@@ -30,6 +28,13 @@ init([Port]) ->
     %    {keyfile, "../priv/ssl/server.key"}
     %], #{env => #{dispatch => Dispatch}}),
     {ok, _} = cowboy:start_clear(http_listener, [{port, Port}], #{env => #{dispatch => Dispatch}}),
+
+    Dispatch2 = cowboy_router:compile([{'_', [
+            {"/", cowboy_static, {file, <<"../priv/web/html/index.html">>}},
+            {"/[...]", cowboy_static, {dir, <<"../priv/web">>}}
+        ]}
+    ]),
+    {ok, _} = cowboy:start_clear(http_listener2, [{port, Port+1}], #{env => #{dispatch => Dispatch2}}),
 
     {ok, true}.
 

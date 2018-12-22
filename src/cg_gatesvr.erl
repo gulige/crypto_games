@@ -16,8 +16,10 @@ start_link(Port) ->
 init([Port]) ->
     Dispatch = cowboy_router:compile([{'_', [
             {"/api", cg_gatesvr_cb, []},
-            {"/", cowboy_static, {file, <<"../priv/web/html/index.html">>}},
-            {"/[...]", cowboy_static, {dir, <<"../priv/web">>}}
+            %{"/", cowboy_static, {file, <<"../priv/web/html/index.html">>}},
+            %{"/[...]", cowboy_static, {dir, <<"../priv/web">>}}
+            {"/", cowboy_static, {file, <<"../priv/eat_chicken/index.html">>}},
+            {"/[...]", cowboy_static, {dir, <<"../priv/eat_chicken">>}}
         ]}
     ]),
 

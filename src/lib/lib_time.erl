@@ -62,7 +62,7 @@ parse_date(Date) ->
 % hh:mm:ss[.sss]TZD
 parse_time(Time) ->
     case string:str(Time, "Z") =:= 0 of
-        true ->
+        false ->
             parse_time_with_timezone(Time);
         _ ->
             [T | _] = string:tokens(Time, "Z"),

@@ -56,6 +56,10 @@ action(<<"GET">>, <<"setmap">> = Action, Req) ->
             {ok, #{}}
     end;
 
+% https://www.eatchicken.com/api/?a=now
+action(<<"GET">>, <<"now">> = Action, _Req) ->
+    {ok, #{now => chain_eos:now()}};
+
 action(_, _Action, _Req) ->
     throw({200, ?ERRNO_ACTION_NOT_SUPPORT, <<"Action not supported">>}).
 

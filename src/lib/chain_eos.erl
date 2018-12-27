@@ -14,7 +14,8 @@
          get_tx/1,
          import_priv_key/1,
          call_contract/4,
-         get_table/6]).
+         get_table/6,
+         now/0]).
 
 -include("common.hrl").
 
@@ -303,6 +304,11 @@ get_table(Contract, Executor, Table, Key, Lower, Limit) ->
     Res = os:cmd(binary_to_list(CmdBin)),
     #{<<"rows">> := Rows, <<"more">> := false} = jiffy:decode(Res, [return_maps]),
     Rows.
+
+now() ->
+    {ok, #{<<"head_block_time">> := TimeBin}} = http_request(<<"chain/get_info">>, [], true),
+    {M, S, _} = lib_time:datetime_string_to_timestamp(binary_to_list(TimeBin)),
+    M * 1000000 + S.
 
 get_http_url(IsPub) ->
     {ok, CfgList} = application:get_env(gatesvr, jsonrpc_eos),

@@ -1,0 +1,21 @@
+{
+	"initial": [
+		"js/egret.min_f3705262.js",
+		"js/egret.web.min_2dd0bd72.js",
+		"js/game.min_45aa06f6.js",
+		"js/tween.min_6c5a88f9.js",
+		"js/assetsmanager.min_f2e50bd1.js",
+		"js/promise.min_83a6a5d.js",
+		"js/tiled.min_afe36081.js",
+		"js/scatter.min_bde3b56e.js",
+		"js/scatter-plugin-eos.min_3aca5ca5.js",
+		"js/scatter-plugin-web3.min_46d78ffc.js",
+		"js/scatter-plugin-tron.min_59421656.js",
+		"js/eos.min_74eed8f6.js",
+		"js/web3.min_ca43e674.js",
+		"js/TronWeb.min_c85d8be8.js"
+	],
+	"game": [
+		"js/main.min_5de9424a.js"
+	]
+}

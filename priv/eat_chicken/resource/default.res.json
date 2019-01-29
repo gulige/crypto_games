@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "bg_jpg,egret_icon_png,description_json,city_png,house_png,soilder_png,flat_png,sword_png,attack_png,defence_png,fight_png,fight_json,recall_png,ack_mp3,fighting_mp3,destroyhuman_wav,ack2_mp3,destroyhuman2_wav,fighting2_mp3,recall2_png,johny_soilder_png,kitty_soilder_png,peter_soilder_png,money_json,money_png,bg1_jpg,logout_png,login_png",
+			"keys": "bg_jpg,egret_icon_png,description_json,city_png,house_png,soilder_png,flat_png,sword_png,attack_png,defence_png,fight_png,fight_json,recall_png,recall2_png,johny_soilder_png,kitty_soilder_png,peter_soilder_png,money_json,money_png,bg1_jpg,logout_png,login_png,first_aid_png,rifle_png,handgun_png,supergun_png,shield_L1_png,shield_L2_png,shield_L3_png,life_png,aid_png,battle_png,gold_mine_png,empty_png,Folder_jpg,glory_1_mp3,ack_mp3,AlbumArtSmall_jpg,Folder2_jpg,AlbumArt_{3021CB75-83D2-4FA1-B3E2-398760DCDA3D}_Large_jpg,AlbumArt_{3021CB75-83D2-4FA1-B3E2-398760DCDA3D}_Small_jpg,destroyhuman_wav,easy_1_mp3,fighting_mp3,honor_1_mp3,play_png,stop_png,firework_json,firework_png,frog_png,frog_json,pao_json,pao_png,bomb_png,yes_mp3,blow_json,blow_png,blow_mp3,cell_png,cow_girl_png,cow_boy_png,shooting_mp3,house_jpg,west_jpg,exit_jpg,exit_png,game_png,test_png,shoot_png,jump_png,item_fall_mp3,player_fall_mp3,shield1_png,shield2_png,shield3_png,avtar_female_png,avtar_male_png,bg_png,explosive_png,gold_png,gun1_png,gun2_png,frame_png,profile_avtar_female_png,profile_avtar_male_png,gun4_png,portraitFrame_png,fighting_png,explosion_png,fighting_json,explosion_json,poison_png,poison_json,setmap_png,kickoff_png",
 			"name": "preload"
 		}
 	],
@@ -77,36 +77,6 @@
 			"url": "assets/recall.png"
 		},
 		{
-			"name": "ack_mp3",
-			"type": "sound",
-			"url": "assets/ack.mp3"
-		},
-		{
-			"name": "fighting_mp3",
-			"type": "sound",
-			"url": "assets/fighting.mp3"
-		},
-		{
-			"name": "destroyhuman_wav",
-			"type": "sound",
-			"url": "assets/destroyhuman.wav"
-		},
-		{
-			"name": "ack2_mp3",
-			"type": "sound",
-			"url": "assets/ack.mp3"
-		},
-		{
-			"name": "destroyhuman2_wav",
-			"type": "sound",
-			"url": "assets/destroyhuman.wav"
-		},
-		{
-			"name": "fighting2_mp3",
-			"type": "sound",
-			"url": "assets/fighting.mp3"
-		},
-		{
 			"name": "recall2_png",
 			"type": "image",
 			"url": "assets/recall.png"
@@ -150,6 +120,371 @@
 			"name": "login_png",
 			"type": "image",
 			"url": "assets/login.png"
+		},
+		{
+			"name": "first_aid_png",
+			"type": "image",
+			"url": "assets/first_aid.png"
+		},
+		{
+			"name": "rifle_png",
+			"type": "image",
+			"url": "assets/rifle.png"
+		},
+		{
+			"name": "handgun_png",
+			"type": "image",
+			"url": "assets/handgun.png"
+		},
+		{
+			"name": "supergun_png",
+			"type": "image",
+			"url": "assets/supergun.png"
+		},
+		{
+			"name": "shield_L1_png",
+			"type": "image",
+			"url": "assets/shield_L1.png"
+		},
+		{
+			"name": "shield_L2_png",
+			"type": "image",
+			"url": "assets/shield_L2.png"
+		},
+		{
+			"name": "shield_L3_png",
+			"type": "image",
+			"url": "assets/shield_L3.png"
+		},
+		{
+			"name": "life_png",
+			"type": "image",
+			"url": "assets/life.png"
+		},
+		{
+			"name": "aid_png",
+			"type": "image",
+			"url": "assets/aid.png"
+		},
+		{
+			"name": "battle_png",
+			"type": "image",
+			"url": "assets/battle.png"
+		},
+		{
+			"name": "gold_mine_png",
+			"type": "image",
+			"url": "assets/gold_mine.png"
+		},
+		{
+			"name": "empty_png",
+			"type": "image",
+			"url": "assets/empty.png"
+		},
+		{
+			"name": "Folder_jpg",
+			"type": "image",
+			"url": "assets/Folder.jpg"
+		},
+		{
+			"name": "glory_1_mp3",
+			"type": "sound",
+			"url": "assets/sound/glory_1.mp3"
+		},
+		{
+			"name": "ack_mp3",
+			"type": "sound",
+			"url": "assets/sound/ack.mp3"
+		},
+		{
+			"name": "AlbumArtSmall_jpg",
+			"type": "image",
+			"url": "assets/sound/AlbumArtSmall.jpg"
+		},
+		{
+			"name": "Folder2_jpg",
+			"type": "image",
+			"url": "assets/sound/Folder.jpg"
+		},
+		{
+			"name": "AlbumArt_{3021CB75-83D2-4FA1-B3E2-398760DCDA3D}_Large_jpg",
+			"type": "image",
+			"url": "assets/sound/AlbumArt_{3021CB75-83D2-4FA1-B3E2-398760DCDA3D}_Large.jpg"
+		},
+		{
+			"name": "AlbumArt_{3021CB75-83D2-4FA1-B3E2-398760DCDA3D}_Small_jpg",
+			"type": "image",
+			"url": "assets/sound/AlbumArt_{3021CB75-83D2-4FA1-B3E2-398760DCDA3D}_Small.jpg"
+		},
+		{
+			"name": "destroyhuman_wav",
+			"type": "sound",
+			"url": "assets/sound/destroyhuman.wav"
+		},
+		{
+			"name": "easy_1_mp3",
+			"type": "sound",
+			"url": "assets/sound/easy_1.mp3"
+		},
+		{
+			"name": "fighting_mp3",
+			"type": "sound",
+			"url": "assets/sound/fighting.mp3"
+		},
+		{
+			"name": "honor_1_mp3",
+			"type": "sound",
+			"url": "assets/sound/honor_1.mp3"
+		},
+		{
+			"name": "play_png",
+			"type": "image",
+			"url": "assets/play.png"
+		},
+		{
+			"name": "stop_png",
+			"type": "image",
+			"url": "assets/stop.png"
+		},
+		{
+			"name": "firework_json",
+			"type": "json",
+			"url": "config/firework.json"
+		},
+		{
+			"name": "firework_png",
+			"type": "image",
+			"url": "assets/firework.png"
+		},
+		{
+			"name": "frog_png",
+			"type": "image",
+			"url": "assets/frog.png"
+		},
+		{
+			"name": "frog_json",
+			"type": "json",
+			"url": "config/frog.json"
+		},
+		{
+			"name": "pao_json",
+			"type": "json",
+			"url": "config/pao.json"
+		},
+		{
+			"name": "pao_png",
+			"type": "image",
+			"url": "assets/pao.png"
+		},
+		{
+			"name": "bomb_png",
+			"type": "image",
+			"url": "assets/bomb.png"
+		},
+		{
+			"name": "yes_mp3",
+			"type": "sound",
+			"url": "assets/sound/yes.mp3"
+		},
+		{
+			"name": "blow_json",
+			"type": "json",
+			"url": "config/blow.json"
+		},
+		{
+			"name": "blow_png",
+			"type": "image",
+			"url": "assets/blow.png"
+		},
+		{
+			"name": "blow_mp3",
+			"type": "sound",
+			"url": "assets/sound/blow.mp3"
+		},
+		{
+			"name": "cell_png",
+			"type": "image",
+			"url": "assets/cell.png"
+		},
+		{
+			"name": "cow_girl_png",
+			"type": "image",
+			"url": "assets/cow_girl.png"
+		},
+		{
+			"name": "cow_boy_png",
+			"type": "image",
+			"url": "assets/cow_boy.png"
+		},
+		{
+			"name": "shooting_mp3",
+			"type": "sound",
+			"url": "assets/sound/shooting.mp3"
+		},
+		{
+			"name": "house_jpg",
+			"type": "image",
+			"url": "assets/house.jpg"
+		},
+		{
+			"name": "west_jpg",
+			"type": "image",
+			"url": "assets/west.jpg"
+		},
+		{
+			"name": "exit_jpg",
+			"type": "image",
+			"url": "assets/exit.jpg"
+		},
+		{
+			"name": "exit_png",
+			"type": "image",
+			"url": "assets/exit.png"
+		},
+		{
+			"name": "game_png",
+			"type": "image",
+			"url": "assets/game.png"
+		},
+		{
+			"name": "test_png",
+			"type": "image",
+			"url": "assets/test.png"
+		},
+		{
+			"name": "shoot_png",
+			"type": "image",
+			"url": "assets/shoot.png"
+		},
+		{
+			"name": "jump_png",
+			"type": "image",
+			"url": "assets/jump.png"
+		},
+		{
+			"name": "item_fall_mp3",
+			"type": "sound",
+			"url": "assets/sound/item_fall.mp3"
+		},
+		{
+			"name": "player_fall_mp3",
+			"type": "sound",
+			"url": "assets/sound/player_fall.mp3"
+		},
+		{
+			"name": "shield1_png",
+			"type": "image",
+			"url": "assets/shield1.png"
+		},
+		{
+			"name": "shield2_png",
+			"type": "image",
+			"url": "assets/shield2.png"
+		},
+		{
+			"name": "shield3_png",
+			"type": "image",
+			"url": "assets/shield3.png"
+		},
+		{
+			"name": "avtar_female_png",
+			"type": "image",
+			"url": "assets/avtar_female.png"
+		},
+		{
+			"name": "avtar_male_png",
+			"type": "image",
+			"url": "assets/avtar_male.png"
+		},
+		{
+			"name": "bg_png",
+			"type": "image",
+			"url": "assets/bg.png"
+		},
+		{
+			"name": "explosive_png",
+			"type": "image",
+			"url": "assets/explosive.png"
+		},
+		{
+			"name": "gold_png",
+			"type": "image",
+			"url": "assets/gold.png"
+		},
+		{
+			"name": "gun1_png",
+			"type": "image",
+			"url": "assets/gun1.png"
+		},
+		{
+			"name": "gun2_png",
+			"type": "image",
+			"url": "assets/gun2.png"
+		},
+		{
+			"name": "frame_png",
+			"type": "image",
+			"url": "assets/frame.png"
+		},
+		{
+			"name": "profile_avtar_female_png",
+			"type": "image",
+			"url": "assets/profile_avtar_female.png"
+		},
+		{
+			"name": "profile_avtar_male_png",
+			"type": "image",
+			"url": "assets/profile_avtar_male.png"
+		},
+		{
+			"name": "gun4_png",
+			"type": "image",
+			"url": "assets/gun4.png"
+		},
+		{
+			"name": "portraitFrame_png",
+			"type": "image",
+			"url": "assets/portraitFrame.png"
+		},
+		{
+			"name": "fighting_png",
+			"type": "image",
+			"url": "assets/fighting.png"
+		},
+		{
+			"name": "explosion_png",
+			"type": "image",
+			"url": "assets/explosion.png"
+		},
+		{
+			"name": "fighting_json",
+			"type": "json",
+			"url": "config/fighting.json"
+		},
+		{
+			"name": "explosion_json",
+			"type": "json",
+			"url": "config/explosion.json"
+		},
+		{
+			"name": "poison_png",
+			"type": "image",
+			"url": "assets/poison.png"
+		},
+		{
+			"name": "poison_json",
+			"type": "json",
+			"url": "config/poison.json"
+		},
+		{
+			"name": "setmap_png",
+			"type": "image",
+			"url": "assets/setmap.png"
+		},
+		{
+			"name": "kickoff_png",
+			"type": "image",
+			"url": "assets/kickoff.png"
 		}
 	]
 }

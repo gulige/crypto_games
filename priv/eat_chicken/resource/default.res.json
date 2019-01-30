@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "bg_jpg,egret_icon_png,description_json,city_png,house_png,soilder_png,flat_png,sword_png,attack_png,defence_png,fight_png,fight_json,recall_png,recall2_png,johny_soilder_png,kitty_soilder_png,peter_soilder_png,money_json,money_png,bg1_jpg,logout_png,login_png,first_aid_png,rifle_png,handgun_png,supergun_png,shield_L1_png,shield_L2_png,shield_L3_png,life_png,aid_png,battle_png,gold_mine_png,empty_png,Folder_jpg,glory_1_mp3,ack_mp3,AlbumArtSmall_jpg,Folder2_jpg,AlbumArt_{3021CB75-83D2-4FA1-B3E2-398760DCDA3D}_Large_jpg,AlbumArt_{3021CB75-83D2-4FA1-B3E2-398760DCDA3D}_Small_jpg,destroyhuman_wav,easy_1_mp3,fighting_mp3,honor_1_mp3,play_png,stop_png,firework_json,firework_png,frog_png,frog_json,pao_json,pao_png,bomb_png,yes_mp3,blow_json,blow_png,blow_mp3,cell_png,cow_girl_png,cow_boy_png,shooting_mp3,house_jpg,west_jpg,exit_jpg,exit_png,game_png,test_png,shoot_png,jump_png,item_fall_mp3,player_fall_mp3,shield1_png,shield2_png,shield3_png,avtar_female_png,avtar_male_png,bg_png,explosive_png,gold_png,gun1_png,gun2_png,frame_png,profile_avtar_female_png,profile_avtar_male_png,gun4_png,portraitFrame_png,fighting_png,explosion_png,fighting_json,explosion_json,poison_png,poison_json,setmap_png,kickoff_png",
+			"keys": "bg_jpg,egret_icon_png,description_json,city_png,house_png,soilder_png,flat_png,sword_png,attack_png,defence_png,fight_png,fight_json,recall_png,recall2_png,johny_soilder_png,kitty_soilder_png,peter_soilder_png,money_json,money_png,bg1_jpg,logout_png,login_png,first_aid_png,rifle_png,handgun_png,supergun_png,shield_L1_png,shield_L2_png,shield_L3_png,life_png,aid_png,battle_png,gold_mine_png,empty_png,Folder_jpg,glory_1_mp3,ack_mp3,AlbumArtSmall_jpg,Folder2_jpg,AlbumArt_{3021CB75-83D2-4FA1-B3E2-398760DCDA3D}_Large_jpg,AlbumArt_{3021CB75-83D2-4FA1-B3E2-398760DCDA3D}_Small_jpg,destroyhuman_wav,easy_1_mp3,fighting_mp3,honor_1_mp3,play_png,stop_png,firework_json,firework_png,frog_png,frog_json,pao_json,pao_png,bomb_png,yes_mp3,blow_json,blow_png,blow_mp3,cell_png,cow_girl_png,cow_boy_png,shooting_mp3,house_jpg,west_jpg,exit_jpg,exit_png,game_png,shoot_png,jump_png,item_fall_mp3,player_fall_mp3,shield1_png,shield2_png,shield3_png,avtar_female_png,avtar_male_png,bg_png,explosive_png,gold_png,gun1_png,gun2_png,frame_png,profile_avtar_female_png,profile_avtar_male_png,gun4_png,portraitFrame_png,fighting_png,explosion_png,fighting_json,explosion_json,poison_png,poison_json,setmap_png,kickoff_png",
 			"name": "preload"
 		}
 	],
@@ -345,11 +345,6 @@
 			"name": "game_png",
 			"type": "image",
 			"url": "assets/game.png"
-		},
-		{
-			"name": "test_png",
-			"type": "image",
-			"url": "assets/test.png"
 		},
 		{
 			"name": "shoot_png",

@@ -1,15 +1,13 @@
 <!DOCTYPE HTML>
-<html>
-
-<head>
+<html><head>
     <meta charset="utf-8">
     <title>Egret</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="full-screen" content="true" />
-    <meta name="screen-orientation" content="portrait" />
-    <meta name="x5-fullscreen" content="true" />
-    <meta name="360-fullscreen" content="true" />
+    <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="full-screen" content="true">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="360-fullscreen" content="true">
     <style>
         html, body {
             -ms-touch-action: none;
@@ -18,18 +16,32 @@
             border: 0;
             margin: 0;
             height: 100%;
-           
+            /*background-image: url(resource/assets/bgfill.jpg);*/
         }
     </style>
+    <!-- drawer.css -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/css/drawer.min.css">
+<meta name="platform" content="eth">
+<!--
+<button type="button" class="drawer-toggle drawer-hamburger">
+      <span class="sr-only">toggle navigation</span>
+      <span><image src="resource/flower.jpg" /></span>
+    </button>
+    <nav class="drawer-nav" role="navigation">
+      <ul class="drawer-menu">
+        <li><a class="drawer-brand" href="#">Brand</a></li>
+        <li><a class="drawer-menu-item" href="#">Nav1</a></li>
+        <li><a class="drawer-menu-item" href="#">Nav2</a></li>
+      </ul>
+    </nav>
+-->
 </head>
 
+<!-- <body class="drawer drawer--right"> -->
 <body>
-      
-
-
     <div style="margin: auto;width: 100%;height: 100%; background-image: url(resource/assets/bg.png); background-size: auto 100%;background-repeat:no-repeat; background-position:center;" 
         class="egret-player"
-        data-entry-class="Main"
+        data-entry-class="Game"
         data-orientation="auto"
         data-scale-mode="showAll"
         data-frame-rate="60"
@@ -39,11 +51,6 @@
         data-multi-fingered="2"
         data-show-fps="false" data-show-log="false"
         data-show-fps-style="x:0,y:0,size:12,textColor:0xffffff,bgAlpha:0.9">
-    </div>
-
-     
-    
- 
 <script>
     var loadScript = function (list, callback) {
         var loaded = 0;
@@ -87,7 +94,7 @@
              * "calculateCanvasScaleFactor": //a function return canvas scale factor
              * }
              **/
-            egret.runEgret({ renderMode: "webgl", audioType: 0, calculateCanvasScaleFactor:function(context) {
+            egret.runEgret({ renderMode: "canvas", audioType: 0, calculateCanvasScaleFactor:function(context) {
                 var backingStore = context.backingStorePixelRatio ||
                     context.webkitBackingStorePixelRatio ||
                     context.mozBackingStorePixelRatio ||
@@ -99,7 +106,23 @@
         });
     });
     xhr.send(null);
-</script>
-</body>
 
-</html>
+    window.ScatterJS = null;  //suggested by Scatter offically
+</script>
+
+
+<!-- jquery & iScroll -->
+<!--
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"></script>
+-->
+<!-- drawer.js -->
+<!--
+<script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/js/drawer.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('.drawer').drawer();
+});
+</script>
+-->
+</body></html>

@@ -282,7 +282,9 @@ get_new_key() ->
     PubKey.
 
 call_contract(Contract, Action, Args, Executor) ->
-    CmdBin = <<"cleos --wallet-url http://127.0.0.1:8900 push action ", Contract/binary, " ", Action/binary, " '", Args/binary, "' -p ", Executor/binary>>,
+    {ok, CfgList} = application:get_env(gatesvr, jsonrpc_eos),
+    {_, Url} = lists:keyfind(rpchost_pub, 1, CfgList),
+    CmdBin = <<"cleos --url ", Url/binary, " --wallet-url http://127.0.0.1:8900 push action ", Contract/binary, " ", Action/binary, " '", Args/binary, "' -p ", Executor/binary>>,
     ?DBG("call_contract: cmd=~s~n", [CmdBin]),
     Res = os:cmd(binary_to_list(CmdBin)),
     case string:tokens(Res, " ") of
@@ -299,7 +301,9 @@ get_table(Contract, Executor, Table, Key, Lower, Limit) ->
     LowerBin = integer_to_binary(Lower),
     LimitBin = integer_to_binary(Limit),
     UpperBin = integer_to_binary(Lower + Limit),
-    CmdBin = <<"cleos get table ", Contract/binary, " ", Executor/binary, " ", Table/binary, " -k ", Key/binary, " -L ", LowerBin/binary, " -U ", UpperBin/binary, " -l ", LimitBin/binary>>,
+    {ok, CfgList} = application:get_env(gatesvr, jsonrpc_eos),
+    {_, Url} = lists:keyfind(rpchost_pub, 1, CfgList),
+    CmdBin = <<"cleos --url ", Url/binary, " get table ", Contract/binary, " ", Executor/binary, " ", Table/binary, " -k ", Key/binary, " -L ", LowerBin/binary, " -U ", UpperBin/binary, " -l ", LimitBin/binary>>,
     ?DBG("get_table: cmd=~s~n", [CmdBin]),
     Res = os:cmd(binary_to_list(CmdBin)),
     #{<<"rows">> := Rows, <<"more">> := false} = jiffy:decode(Res, [return_maps]),
@@ -318,7 +322,7 @@ get_http_url(IsPub) ->
         false ->
             {_, Url} = lists:keyfind(rpchost, 1, CfgList)
     end,
-    <<"http://", Url/binary, "/v1/">>.
+    <<Url/binary, "/v1/">>.
 
 http_request(ParamsUrl) ->
     http_request(ParamsUrl, [], false).

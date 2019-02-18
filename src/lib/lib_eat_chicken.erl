@@ -6,6 +6,8 @@
 -module(lib_eat_chicken).
 -compile(export_all).
 
+-include("common.hrl").
+
 -define(BOARD_SIZE, 11 * 11).
 
 set_map(GameId) ->
@@ -13,11 +15,12 @@ set_map(GameId) ->
     {Items, DropTicks} = gen_map(),
     ItemsBin = jiffy:encode(Items),
     DropTicksBin = jiffy:encode(DropTicks),
+    Account = get_account(),
     chain_eos:call_contract(
-        <<"eat.chicken">>,
+        Account,
         <<"setmap">>,
-        <<"[ \"eat.chicken\", ", GameIdBin/binary, ", ", ItemsBin/binary, ", ", DropTicksBin/binary, " ]">>,
-        <<"eat.chicken">>).
+        <<"[ \"", Account/binary, "\", ", GameIdBin/binary, ", ", ItemsBin/binary, ", ", DropTicksBin/binary, " ]">>,
+        Account).
 
 % 生成地图，实际上就是随机生成道具分布
 % 0.   无
@@ -55,7 +58,8 @@ gen_map() ->
     lists:unzip(L).
 
 start_tick_workers() ->
-    case chain_eos:get_table(<<"eat.chicken">>, <<"eat.chicken">>, <<"games">>, <<"game_id">>, 0, -1) of
+    Account = get_account(),
+    case chain_eos:get_table(Account, Account, <<"games">>, <<"game_id">>, 0, -1) of
         [] -> void;
         L ->
             [lib_tick:start_one_tick_worker(<<"eat_chicken">>, GameId) ||
@@ -65,9 +69,16 @@ start_tick_workers() ->
 
 do_tick(GameId) ->
     GameIdBin = integer_to_binary(GameId),
+    Account = get_account(),
     chain_eos:call_contract(
-        <<"eat.chicken">>,
+        Account,
         <<"tick">>,
-        <<"[ \"eat.chicken\", ", GameIdBin/binary, " ]">>,
-        <<"eat.chicken">>).
+        <<"[ \"", Account/binary, "\", ", GameIdBin/binary, " ]">>,
+        Account).
+
+get_account() ->
+    case cg:env() of
+        ?ENV_DEV -> <<"eat.chicken">>;
+        _ -> <<"eat1chicken2">>
+    end.
 

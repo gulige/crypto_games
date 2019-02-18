@@ -18,6 +18,7 @@
 
 % 环境
 -define(ENV_DEV, dev).
+-define(ENV_BETA, beta).
 -define(ENV_PROD, prod).
 
 -define(SVRTYPE_GATE, 1).

@@ -14,6 +14,8 @@
         {start_phases, []},
         {env, [
                 {env, dev}
+                %{env, beta}
+                %{env, prod}
             ]}
     ]
 }.

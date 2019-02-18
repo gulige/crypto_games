@@ -77,7 +77,7 @@ function create_game()
                         }],
                         data: {
                             from: creatorName,
-                            to: 'eat.chicken',
+                            to: config.contract,
                             quantity: joinEos,
                             memo: ''
                         }
@@ -103,8 +103,8 @@ function game_info()
             eos.getTableRows(
                 {
                     json: true,
-                    scope: "eat.chicken",
-                    code: "eat.chicken",
+                    scope: config.contract,
+                    code: config.contract,
                     table: "games",
                     limit:1,
                     lower_bound: gameId,
@@ -119,8 +119,8 @@ function game_info()
             eos.getTableRows(
                 {
                     json: true,
-                    scope: "eat.chicken",
-                    code: "eat.chicken",
+                    scope: config.contract,
+                    code: config.contract,
                     table: "games"
                 }
             ).then((resp) => {
@@ -179,7 +179,7 @@ function join_game()
                     }],
                     data: {
                         from: joinerName,
-                        to: 'eat.chicken',
+                        to: config.contract,
                         quantity: transferEos,
                         memo: gameIdStr + ',' + joinXStr + ',' + joinYStr
                     }
@@ -214,7 +214,7 @@ function kick_off()
         {
             actions: [
                 {
-                    account: 'eat.chicken',
+                    account: config.contract,
                     name: 'kickoff',
                     authorization: [{
                         actor: requesterName,
@@ -259,7 +259,7 @@ function move()
         {
             actions: [
                 {
-                    account: 'eat.chicken',
+                    account: config.contract,
                     name: 'move',
                     authorization: [{
                         actor: requesterName,
@@ -289,20 +289,36 @@ socket.on("connect", function () {
     });
 });
 
+// 通过cleos get info可以获取chainId
 chain = {
     main: 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906', // main network
     jungle: 'e70aaab8997e1dfce58fbfac80cbbb8fecec7b99cf982a9444273cbc64c41473', // jungle testnet2
     dev: 'cf057bbfb72640471fd910bcb67639c22df9f92470936cddc1ade0e2f2e7dc4f' // local developer
 }
 
+// EOS链url与端口
+endpoint = {
+    main: '',
+    jungle: 'https://jungle2.cryptolions.io:443',
+    dev: 'http://114.115.135.201:8888'
+}
+
+contract = {
+    main: 'eat1chicken2',
+    jungle: 'eat1chicken2',
+    dev: 'eat.chicken'
+}
+
 config = {
     keyProvider: ['5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3', // eosio
                   '5KRF8dr2fvHx9dVQyBqWwYhs7KvT8UdCb8Fy6hpWqHp6yZ1K6T3' // player1, player2
                 ], // 配置私钥字符串
-    httpEndpoint: 'http://114.115.135.201:8888', // EOS开发链url与端口
-    chainId: chain.dev, // 通过cleos get info可以获取chainId
-    //httpEndpoint: 'https://jungle2.cryptolions.io:443',
+    chainId: chain.dev,
+    httpEndpoint: endpoint.dev,
+    contract: contract.dev,
     //chainId: chain.jungle,
+    //httpEndpoint: endpoint.jungle,
+    //contract: contract.jungle,
     expireInSeconds: 60,
     broadcast: true,
     debug: false,

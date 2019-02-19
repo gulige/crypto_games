@@ -293,7 +293,9 @@ call_contract(Contract, Action, Args, Executor) ->
         [_, Code | _] when Code =:= "3120002:"; Code =:= "3120003:"; Code =:= "3120004:" ->
             make_sure_usable(),
             call_contract(Contract, Action, Args, Executor);
-        [_, Code | _] when Code =:= "3040005:" -> % Expired Transaction
+        [_, Code | _] when Code =:= "3040005:" -> % expired transaction
+            call_contract(Contract, Action, Args, Executor);
+        [_, Code | _] when Code =:= "3200002:" -> % invalid http response
             call_contract(Contract, Action, Args, Executor);
         [_, Code | _] ->
             {error, Res}

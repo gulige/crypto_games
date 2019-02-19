@@ -22,7 +22,9 @@ do_game(Game, GameId) ->
     try
         M = list_to_atom("lib_" ++ binary_to_list(Game)),
         case M:do_tick(GameId) of
-            {error, Res} -> stop;
+            {error, Res} ->
+                ?INFO("~p tick error: ~p~n", [M, Res]),
+                stop;
             _ -> continue
         end
     catch

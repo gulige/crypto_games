@@ -64,7 +64,7 @@ start_tick_workers() ->
         L ->
             [lib_tick:start_one_tick_worker(<<"eat_chicken">>, GameId) ||
                #{<<"game_id">> := GameId, <<"game_progress">> := Progress} <- L,
-               Progress =:= 1 orelse Progress =:= 2]
+               Progress =:= 1 orelse Progress =:= 2 orelse Progress =:= 3]
     end.
 
 do_tick(GameId) ->

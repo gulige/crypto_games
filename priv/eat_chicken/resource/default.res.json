@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "description_json,city_png,money_json,money_png,logout_png,login_png,first_aid_png,rifle_png,handgun_png,supergun_png,shield_L1_png,shield_L2_png,shield_L3_png,life_png,aid_png,battle_png,gold_mine_png,empty_png,ack_mp3,destroyhuman_wav,easy_1_mp3,fighting_mp3,play_png,stop_png,bomb_png,yes_mp3,blow_mp3,cell_png,shooting_mp3,exit_png,game_png,jump_png,item_fall_mp3,player_fall_mp3,shield1_png,shield2_png,shield3_png,avtar_female_png,avtar_male_png,explosive_png,gold_png,gun1_png,gun2_png,profile_avtar_female_png,profile_avtar_male_png,gun4_png,portraitFrame_png,fighting_png,explosion_png,fighting_json,explosion_json,poison_png,poison_json,setmap_png,kickoff_png,gameover_jpg,show_png,hide_png,combat_png,medicine_png,rebirth_png,house_png,town_png,mute_png,music_png",
+			"keys": "description_json,city_png,money_json,money_png,logout_png,login_png,first_aid_png,rifle_png,handgun_png,supergun_png,shield_L1_png,shield_L2_png,shield_L3_png,life_png,aid_png,battle_png,gold_mine_png,empty_png,ack_mp3,destroyhuman_wav,easy_1_mp3,fighting_mp3,play_png,stop_png,bomb_png,yes_mp3,blow_mp3,cell_png,shooting_mp3,exit_png,game_png,jump_png,item_fall_mp3,player_fall_mp3,shield1_png,shield2_png,shield3_png,avtar_female_png,avtar_male_png,explosive_png,gold_png,gun1_png,gun2_png,profile_avtar_female_png,profile_avtar_male_png,gun4_png,portraitFrame_png,fighting_png,explosion_png,fighting_json,explosion_json,poison_png,poison_json,setmap_png,kickoff_png,gameover_jpg,show_png,hide_png,combat_png,medicine_png,rebirth_png,house_png,town_png,mute_png,music_png,arrow-down_png,arrow-down_json",
 			"name": "preload"
 		}
 	],
@@ -507,19 +507,29 @@
 			"name": "rebirth_png"
 		},
 		{
-			"name": "town_png",
+			"url": "assets/town.png",
 			"type": "image",
-			"url": "assets/town.png"
+			"name": "town_png"
 		},
 		{
-			"name": "mute_png",
+			"url": "assets/mute.png",
 			"type": "image",
-			"url": "assets/mute.png"
+			"name": "mute_png"
 		},
 		{
-			"name": "music_png",
+			"url": "assets/music.png",
 			"type": "image",
-			"url": "assets/music.png"
+			"name": "music_png"
+		},
+		{
+			"url": "assets/arrow-down.png",
+			"type": "image",
+			"name": "arrow-down_png"
+		},
+		{
+			"url": "config/arrow-down.json",
+			"type": "json",
+			"name": "arrow-down_json"
 		}
 	]
 }

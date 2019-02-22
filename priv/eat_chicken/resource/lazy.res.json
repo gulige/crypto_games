@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "identity_jpg,identity_json,identity_png",
+			"keys": "identity_jpg,identity_json,identity_png,horse_json,horse_png",
 			"name": "lazy"
 		}
 	],
@@ -520,6 +520,16 @@
 			"url": "assets/identity.png",
 			"type": "image",
 			"name": "identity_png"
+		},
+		{
+			"url": "config/horse.json",
+			"type": "json",
+			"name": "horse_json"
+		},
+		{
+			"url": "assets/horse.png",
+			"type": "image",
+			"name": "horse_png"
 		}
 	]
 }

@@ -1,8 +1,12 @@
 {
 	"groups": [
 		{
-			"keys": "identity_jpg,identity_json,identity_png,horse_json,horse_png",
+			"keys": "identity_jpg,identity_json,identity_png,horse_json,horse_png,horse-left_png,horse-left_json",
 			"name": "lazy"
+		},
+		{
+			"keys": "horse-left_png,horse-left_json",
+			"name": "preload"
 		}
 	],
 	"resources": [
@@ -530,6 +534,16 @@
 			"url": "assets/horse.png",
 			"type": "image",
 			"name": "horse_png"
+		},
+		{
+			"url": "assets/horse-left.png",
+			"type": "image",
+			"name": "horse-left_png"
+		},
+		{
+			"url": "config/horse-left.json",
+			"type": "json",
+			"name": "horse-left_json"
 		}
 	]
 }

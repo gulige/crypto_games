@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "description_json,city_png,money_json,money_png,logout_png,login_png,first_aid_png,rifle_png,handgun_png,supergun_png,shield_L1_png,shield_L2_png,shield_L3_png,life_png,aid_png,battle_png,gold_mine_png,empty_png,ack_mp3,destroyhuman_wav,easy_1_mp3,fighting_mp3,play_png,stop_png,bomb_png,yes_mp3,blow_mp3,cell_png,shooting_mp3,exit_png,game_png,jump_png,item_fall_mp3,player_fall_mp3,shield1_png,shield2_png,shield3_png,avtar_female_png,avtar_male_png,explosive_png,gold_png,gun1_png,gun2_png,profile_avtar_female_png,profile_avtar_male_png,gun4_png,portraitFrame_png,fighting_png,explosion_png,fighting_json,explosion_json,poison_png,poison_json,setmap_png,kickoff_png,gameover_jpg,show_png,hide_png,combat_png,medicine_png,rebirth_png,house_png,town_png,mute_png,music_png,arrow-down_png,arrow-down_json,description_png,close_png,portraitFrame_self_png,yes_female_mp3",
+			"keys": "description_json,city_png,money_json,money_png,logout_png,login_png,first_aid_png,rifle_png,handgun_png,supergun_png,shield_L1_png,shield_L2_png,shield_L3_png,life_png,aid_png,battle_png,gold_mine_png,empty_png,ack_mp3,destroyhuman_wav,easy_1_mp3,fighting_mp3,play_png,stop_png,bomb_png,yes_mp3,blow_mp3,cell_png,shooting_mp3,exit_png,game_png,jump_png,item_fall_mp3,player_fall_mp3,shield1_png,shield2_png,shield3_png,avtar_female_png,avtar_male_png,explosive_png,gold_png,gun1_png,gun2_png,profile_avtar_female_png,profile_avtar_male_png,gun4_png,portraitFrame_png,fighting_png,explosion_png,fighting_json,explosion_json,poison_png,poison_json,setmap_png,kickoff_png,gameover_jpg,show_png,hide_png,combat_png,medicine_png,rebirth_png,house_png,town_png,mute_png,music_png,arrow-down_png,arrow-down_json,description_png,close_png,portraitFrame_self_png,yes_female_mp3,game_1_png,town2_png,game_2_png,EOS_1_png,EOS_3_png,EOS_5_png",
 			"name": "preload"
 		}
 	],
@@ -550,6 +550,36 @@
 			"name": "yes_female_mp3",
 			"type": "sound",
 			"url": "assets/sound/yes_female.mp3"
+		},
+		{
+			"name": "game_1_png",
+			"type": "image",
+			"url": "assets/game_1.png"
+		},
+		{
+			"name": "town2_png",
+			"type": "image",
+			"url": "assets/town.png"
+		},
+		{
+			"name": "game_2_png",
+			"type": "image",
+			"url": "assets/game_2.png"
+		},
+		{
+			"name": "EOS_1_png",
+			"type": "image",
+			"url": "assets/EOS_1.png"
+		},
+		{
+			"name": "EOS_3_png",
+			"type": "image",
+			"url": "assets/EOS_3.png"
+		},
+		{
+			"name": "EOS_5_png",
+			"type": "image",
+			"url": "assets/EOS_5.png"
 		}
 	]
 }

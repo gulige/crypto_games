@@ -286,24 +286,35 @@ call_contract(Contract, Action, Args, Executor) ->
     {_, Url} = lists:keyfind(rpchost_pub, 1, CfgList),
     CmdBin = <<"cleos --url ", Url/binary, " --wallet-url http://127.0.0.1:8900 push action ", Contract/binary, " ", Action/binary, " '", Args/binary, "' -p ", Executor/binary>>,
     ?DBG("call_contract: cmd=~s~n", [CmdBin]),
-    Res = os:cmd(binary_to_list(CmdBin)),
-    case string:tokens(Res, " ") of
-        ["executed", "transaction:", TxId | _] ->
-            list_to_binary(TxId);
-        [_, Code | _] when Code =:= "3120002:"; Code =:= "3120003:"; Code =:= "3120004:" ->
-            make_sure_usable(),
+    Parent = self(),
+    {Pid, Mref} = spawn_monitor(fun() -> Parent ! {self(), os:cmd(binary_to_list(CmdBin))} end),
+    receive
+        {'DOWN', Mref, process, Pid, Reason} ->
+            ?INFO("call_contract error: ~p~ntry again...~n", [Reason]),
             call_contract(Contract, Action, Args, Executor);
-        [_, Code | _] when Code =:= "3040005:" -> % expired transaction
-            ?INFO("call_contract error: ~p~ntry again...~n", [Res]),
-            call_contract(Contract, Action, Args, Executor);
-        [_, Code | _] when Code =:= "3080006:" -> % transaction took too long
-            ?INFO("call_contract error: ~p~ntry again...~n", [Res]),
-            call_contract(Contract, Action, Args, Executor);
-        [_, Code | _] when Code =:= "3200002:" -> % invalid http response
-            ?INFO("call_contract error: ~p~ntry again...~n", [Res]),
-            call_contract(Contract, Action, Args, Executor);
-        [_, Code | _] ->
-            {error, Res}
+        {Pid, Res} ->
+            case string:tokens(Res, " ") of
+                ["executed", "transaction:", TxId | _] ->
+                    list_to_binary(TxId);
+                [_, Code | _] when Code =:= "3120002:"; Code =:= "3120003:"; Code =:= "3120004:" ->
+                    make_sure_usable(),
+                    call_contract(Contract, Action, Args, Executor);
+                [_, Code | _] when Code =:= "3040005:" -> % expired transaction
+                    ?INFO("call_contract error: ~p~ntry again...~n", [Res]),
+                    call_contract(Contract, Action, Args, Executor);
+                [_, Code | _] when Code =:= "3080006:" -> % transaction took too long
+                    ?INFO("call_contract error: ~p~ntry again...~n", [Res]),
+                    call_contract(Contract, Action, Args, Executor);
+                [_, Code | _] when Code =:= "3200002:" -> % invalid http response
+                    ?INFO("call_contract error: ~p~ntry again...~n", [Res]),
+                    call_contract(Contract, Action, Args, Executor);
+                [_, Code | _] ->
+                    {error, Res}
+            end
+    after 20000 ->
+        exit(Pid, timeout),
+        ?INFO("call_contract error: timeout~ntry again...~n", []),
+        call_contract(Contract, Action, Args, Executor)
     end.
 
 get_table(Contract, Executor, Table, Key, Lower, Limit) ->

@@ -28,7 +28,7 @@
       
 
 
-    <div id="eat_chicken"  style="margin: atuo;width: 100%;height: 100%; background-image: url(resource/assets/bg-small.jpg); background-size:auto 100% ;background-repeat:no-repeat; background-position:center;"
+    <div id="eat_chicken" 
         class="egret-player"
         data-entry-class="Main"
         data-orientation="landscape"
@@ -52,6 +52,10 @@
             loadSingleScript(list[loaded], function () {
                 loaded++;
                 if (loaded >= list.length) {
+                     hallImage.onload = ()=>{
+                        mainNode.setAttribute("style", "margin: atuo;width: 100%;height: 100%; background-image: url(resource/assets/bg.jpg); background-size:auto 100% ;background-repeat:no-repeat; background-position:center;")
+                    }
+                    hallImage.src = "resource/assets/bg.jpg"
                     callback();
                 }
                 else {
@@ -101,19 +105,14 @@
     });
     xhr.send(null);
 
-
+    let hallImage = new Image()
+    let mainNode = document.getElementById("eat_chicken")
     if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
         //alert('手机端')
-        let node = document.getElementById("eat_chicken")
-        node.setAttribute("style", "margin: atuo;width: 100%;height: 100%; background-image: url(resource/assets/bg-m.jpg); background-size:auto 100% ;background-repeat:no-repeat; background-position:center;")
+        mainNode.setAttribute("style", "margin: atuo;width: 100%;height: 100%; background-image: url(resource/assets/bg-m.jpg); background-size:auto 100% ;background-repeat:no-repeat; background-position:center;")
     }else{
-        //alert('PC端')
-        let node = document.getElementById("eat_chicken")
-        let image = new Image()
-        image.onload = ()=>{
-            node.setAttribute("style", "margin: atuo;width: 100%;height: 100%; background-image: url(resource/assets/bg.jpg); background-size:auto 100% ;background-repeat:no-repeat; background-position:center;")
-        }
-        image.src = "resource/assets/bg.jpg"
+        //alert('PC端')      
+         mainNode.setAttribute("style", "margin: atuo;width: 100%;height: 100%; background-image: url(resource/assets/bg-small.jpg); background-size:auto 100% ;background-repeat:no-repeat; background-position:center;")     
     }
 
 

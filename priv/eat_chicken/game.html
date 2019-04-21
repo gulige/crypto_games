@@ -40,7 +40,7 @@
 
 <!-- <body class="drawer drawer--right"> -->
 <body>
-    <div id="eat_chicken" style="margin: atuo;width: 100%;height: 100%; background-image: url(resource/assets/env-small.jpg); background-size:auto 100% ;background-repeat:no-repeat; background-position:center;"
+    <div id="eat_chicken"
         class="egret-player"
         data-entry-class="Game"
         data-orientation="landscape"
@@ -110,20 +110,19 @@
 
     window.ScatterJS = null;  //suggested by Scatter offically
 
+    let gameImage = new Image()
+    let mainNode = document.getElementById("eat_chicken")
     if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
        // alert('手机端')
-        let node = document.getElementById("eat_chicken")
-        node.setAttribute("style", "margin: auto;width: 100%;height: 100%; background-image: url(resource/assets/env-m.jpg); background-size:100% auto ;background-repeat:no-repeat; background-position:center;")
+        mainNode.setAttribute("style", "margin: auto;width: 100%;height: 100%; background-image: url(resource/assets/env-m.jpg); background-size:100% auto ;background-repeat:no-repeat; background-position:center;")
         
     }else{
-       // alert('PC端')
-        let node = document.getElementById("eat_chicken")
-        
-        let image = new Image()
-        image.onload = ()=>{
-            node.setAttribute("style", "margin: atuo;width: 100%;height: 100%; background-image: url(resource/assets/env.jpg); background-size:auto 100% ;background-repeat:no-repeat; background-position:center;")
+       // alert('PC端')  
+        mainNode.setAttribute("style", "margin: atuo;width: 100%;height: 100%; background-image: url(resource/assets/env-small.jpg); background-size:auto 100% ;background-repeat:no-repeat; background-position:center;")     
+        gameImage.onload = ()=>{
+            mainNode.setAttribute("style", "margin: atuo;width: 100%;height: 100%; background-image: url(resource/assets/env.jpg); background-size:auto 100% ;background-repeat:no-repeat; background-position:center;")
         }
-        image.src = "resource/assets/env.jpg"
+        gameImage.src = "resource/assets/env.jpg"
     }
     let locale = localStorage.getItem("eatchicken_locale") 
     if (locale == null || locale.toString() == "zh_CN"){

@@ -51,11 +51,7 @@
         var loadNext = function () {
             loadSingleScript(list[loaded], function () {
                 loaded++;
-                if (loaded >= list.length) {
-                     hallImage.onload = ()=>{
-                        mainNode.setAttribute("style", "margin: atuo;width: 100%;height: 100%; background-image: url(resource/assets/bg.jpg); background-size:auto 100% ;background-repeat:no-repeat; background-position:center;")
-                    }
-                    hallImage.src = "resource/assets/bg.jpg"
+                if (loaded >= list.length) {                   
                     callback();
                 }
                 else {
@@ -113,7 +109,11 @@
     }else{
         //alert('PC端')      
          mainNode.setAttribute("style", "margin: atuo;width: 100%;height: 100%; background-image: url(resource/assets/bg-small.jpg); background-size:auto 100% ;background-repeat:no-repeat; background-position:center;")     
-    }
+         hallImage.onload = ()=>{
+            mainNode.setAttribute("style", "margin: atuo;width: 100%;height: 100%; background-image: url(resource/assets/bg.jpg); background-size:auto 100% ;background-repeat:no-repeat; background-position:center;")
+        }
+        hallImage.src = "resource/assets/bg.jpg"
+}
 
 
     let locale = localStorage.getItem("eatchicken_locale")  

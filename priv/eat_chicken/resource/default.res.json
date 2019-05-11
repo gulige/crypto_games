@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "description_json,city_png,money_json,money_png,logout_png,login_png,first_aid_png,rifle_png,handgun_png,supergun_png,shield_L1_png,shield_L2_png,shield_L3_png,life_png,aid_png,battle_png,gold_mine_png,empty_png,ack_mp3,destroyhuman_wav,easy_1_mp3,fighting_mp3,play_png,stop_png,bomb_png,yes_mp3,blow_mp3,cell_png,shooting_mp3,exit_png,game_png,jump_png,item_fall_mp3,player_fall_mp3,shield1_png,shield2_png,shield3_png,avtar_female_png,avtar_male_png,explosive_png,gold_png,gun1_png,gun2_png,profile_avtar_female_png,profile_avtar_male_png,gun4_png,portraitFrame_png,fighting_png,explosion_png,fighting_json,explosion_json,poison_png,poison_json,setmap_png,kickoff_png,show_png,hide_png,combat_png,medicine_png,rebirth_png,house_png,town_png,mute_png,music_png,arrow-down_png,arrow-down_json,description_png,close_png,portraitFrame_self_png,yes_female_mp3,game_1_png,town2_png,game_2_png,EOS_1_png,EOS_3_png,EOS_5_png",
+			"keys": "description_json,city_png,money_json,money_png,logout_png,login_png,first_aid_png,rifle_png,handgun_png,supergun_png,shield_L1_png,shield_L2_png,shield_L3_png,life_png,aid_png,battle_png,gold_mine_png,empty_png,ack_mp3,destroyhuman_wav,easy_1_mp3,fighting_mp3,play_png,stop_png,bomb_png,yes_mp3,blow_mp3,cell_png,shooting_mp3,exit_png,game_png,jump_png,item_fall_mp3,player_fall_mp3,shield1_png,shield2_png,shield3_png,explosive_png,gold_png,gun1_png,gun2_png,gun4_png,portraitFrame_png,fighting_png,explosion_png,fighting_json,explosion_json,poison_png,poison_json,setmap_png,kickoff_png,show_png,hide_png,combat_png,medicine_png,rebirth_png,house_png,town_png,mute_png,music_png,arrow-down_png,arrow-down_json,description_png,close_png,portraitFrame_self_png,yes_female_mp3,game_1_png,town2_png,game_2_png,EOS_1_png,EOS_3_png,EOS_5_png,bg-r_png,main_exit_png,avtar_male_0_png,avtar_female_1_png,profile_avtar_male_0_png,profile_avtar_female_1_png,avtar_male_2_png,avtar_male_4_png,profile_avtar_male_2_png,profile_avtar_male_4_png,profile_avtar_female_3_png,profile_avtar_female_5_png,profile_avtar_female_6_png,avtar_female_3_png,avtar_female_5_png,avtar_female_6_png",
 			"name": "preload"
 		}
 	],
@@ -377,16 +377,6 @@
 			"name": "shield3_png"
 		},
 		{
-			"url": "assets/avtar_female.png",
-			"type": "image",
-			"name": "avtar_female_png"
-		},
-		{
-			"url": "assets/avtar_male.png",
-			"type": "image",
-			"name": "avtar_male_png"
-		},
-		{
 			"url": "assets/bg.png",
 			"type": "image",
 			"name": "bg_png"
@@ -415,16 +405,6 @@
 			"url": "assets/frame.png",
 			"type": "image",
 			"name": "frame_png"
-		},
-		{
-			"url": "assets/profile_avtar_female.png",
-			"type": "image",
-			"name": "profile_avtar_female_png"
-		},
-		{
-			"url": "assets/profile_avtar_male.png",
-			"type": "image",
-			"name": "profile_avtar_male_png"
 		},
 		{
 			"url": "assets/gun4.png",
@@ -575,6 +555,86 @@
 			"url": "assets/EOS_5.png",
 			"type": "image",
 			"name": "EOS_5_png"
+		},
+		{
+			"url": "assets/bg-r.png",
+			"type": "image",
+			"name": "bg-r_png"
+		},
+		{
+			"name": "main_exit_png",
+			"type": "image",
+			"url": "assets/main_exit.png"
+		},
+		{
+			"name": "avtar_male_0_png",
+			"type": "image",
+			"url": "assets/avtar_male_0.png"
+		},
+		{
+			"name": "avtar_female_1_png",
+			"type": "image",
+			"url": "assets/avtar_female_1.png"
+		},
+		{
+			"name": "profile_avtar_male_0_png",
+			"type": "image",
+			"url": "assets/profile_avtar_male_0.png"
+		},
+		{
+			"name": "profile_avtar_female_1_png",
+			"type": "image",
+			"url": "assets/profile_avtar_female_1.png"
+		},
+		{
+			"name": "avtar_male_2_png",
+			"type": "image",
+			"url": "assets/avtar_male_2.png"
+		},
+		{
+			"name": "avtar_male_4_png",
+			"type": "image",
+			"url": "assets/avtar_male_4.png"
+		},
+		{
+			"name": "profile_avtar_male_2_png",
+			"type": "image",
+			"url": "assets/profile_avtar_male_2.png"
+		},
+		{
+			"name": "profile_avtar_male_4_png",
+			"type": "image",
+			"url": "assets/profile_avtar_male_4.png"
+		},
+		{
+			"name": "profile_avtar_female_3_png",
+			"type": "image",
+			"url": "assets/profile_avtar_female_3.png"
+		},
+		{
+			"name": "profile_avtar_female_5_png",
+			"type": "image",
+			"url": "assets/profile_avtar_female_5.png"
+		},
+		{
+			"name": "profile_avtar_female_6_png",
+			"type": "image",
+			"url": "assets/profile_avtar_female_6.png"
+		},
+		{
+			"name": "avtar_female_3_png",
+			"type": "image",
+			"url": "assets/avtar_female_3.png"
+		},
+		{
+			"name": "avtar_female_5_png",
+			"type": "image",
+			"url": "assets/avtar_female_5.png"
+		},
+		{
+			"name": "avtar_female_6_png",
+			"type": "image",
+			"url": "assets/avtar_female_6.png"
 		}
 	]
 }

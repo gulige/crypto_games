@@ -3,10 +3,6 @@
 		{
 			"keys": "identity_jpg,identity_json,identity_png,horse_json,horse_png,horse-left_png,horse-left_json",
 			"name": "lazy"
-		},
-		{
-			"keys": "horse-left_png,horse-left_json",
-			"name": "preload"
 		}
 	],
 	"resources": [
@@ -544,6 +540,11 @@
 			"url": "config/horse-left.json",
 			"type": "json",
 			"name": "horse-left_json"
+		},
+		{
+			"url": "assets/bg-r.png",
+			"type": "image",
+			"name": "bg-r_png"
 		}
 	]
 }

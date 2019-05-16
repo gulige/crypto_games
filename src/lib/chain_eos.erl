@@ -319,8 +319,11 @@ call_contract(Contract, Action, Args, Executor) ->
 
 get_table(Contract, Executor, Table, Key, Lower, Limit) ->
     LowerBin = integer_to_binary(Lower),
-    LimitBin = integer_to_binary(Limit),
-    UpperBin = integer_to_binary(Lower + Limit),
+    {LimitBin, UpperBin} =
+        case Limit < 0 of
+            true -> {<<"-1">>, <"-1">>};
+            false -> {integer_to_binary(Limit), integer_to_binary(Lower + Limit)}
+        end,
     {ok, CfgList} = application:get_env(gatesvr, jsonrpc_eos),
     {_, Url} = lists:keyfind(rpchost_pub, 1, CfgList),
     CmdBin = <<"cleos --url ", Url/binary, " get table ", Contract/binary, " ", Executor/binary, " ", Table/binary, " -k ", Key/binary, " -L ", LowerBin/binary, " -U ", UpperBin/binary, " -l ", LimitBin/binary>>,

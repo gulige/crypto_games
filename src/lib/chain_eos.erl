@@ -321,7 +321,7 @@ get_table(Contract, Executor, Table, Key, Lower, Limit) ->
     LowerBin = integer_to_binary(Lower),
     {LimitBin, UpperBin} =
         case Limit < 0 of
-            true -> {<<"-1">>, <"-1">>};
+            true -> {<<"-1">>, <<"-1">>};
             false -> {integer_to_binary(Limit), integer_to_binary(Lower + Limit)}
         end,
     {ok, CfgList} = application:get_env(gatesvr, jsonrpc_eos),

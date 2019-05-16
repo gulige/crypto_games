@@ -58,13 +58,22 @@ gen_map() ->
     lists:unzip(L).
 
 start_tick_workers() ->
+    do_start_tick_workers(0).
+
+do_start_tick_workers(FromGameId) ->
     Account = get_account(),
-    case chain_eos:get_table(Account, Account, <<"games">>, <<"game_id">>, 0, -1) of
-        [] -> void;
-        L ->
+    case chain_eos:get_table(Account, Account, <<"games">>, <<"game_id">>, FromGameId, -1) of
+        {[], _} -> void;
+        {L, More} ->
             [lib_tick:start_one_tick_worker(<<"eat_chicken">>, GameId) ||
                #{<<"game_id">> := GameId, <<"game_progress">> := Progress} <- L,
-               Progress =:= 1 orelse Progress =:= 2 orelse Progress =:= 3]
+               Progress =:= 1 orelse Progress =:= 2 orelse Progress =:= 3],
+            case More of
+                false -> void;
+                true ->
+                    MaxGameId = lists:max([GameId || #{<<"game_id">> := GameId} <- L]),
+                    do_start_tick_workers(MaxGameId + 1)
+            end
     end.
 
 do_tick(GameId) ->

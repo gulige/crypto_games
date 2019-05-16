@@ -308,6 +308,9 @@ call_contract(Contract, Action, Args, Executor) ->
                 [_, Code | _] when Code =:= "3200002:" -> % invalid http response
                     ?INFO("call_contract error: ~p~ntry again...~n", [Res]),
                     call_contract(Contract, Action, Args, Executor);
+                [_, Code | _] when Code =:= "3040008:" -> % duplicate transaction
+                    ?INFO("call_contract error: ~p~ntry again...~n", [Res]),
+                    call_contract(Contract, Action, Args, Executor);
                 [_, Code | _] ->
                     {error, Res}
             end

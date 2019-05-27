@@ -378,7 +378,8 @@ http_request_(ParamsUrl, Params, IsPub) ->
                      [{_,_}|_] -> jiffy:encode({Params});
                      _ -> jiffy:encode(Params)
                  end,
-    ?DBG("Url: ~p, Params: ~p~n", [Url, JsonParams]),
+    case 
+    %?DBG("Url: ~p, Params: ~p~n", [Url, JsonParams]),
     case ibrowse:send_req(binary_to_list(Url), [?JSON_CONTENT], post, JsonParams, [], ?HTTP_REQUEST_TIMEOUT) of
         {ok, Status, _Head, Body} ->
             case Status of

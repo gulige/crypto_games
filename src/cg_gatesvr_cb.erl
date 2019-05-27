@@ -12,7 +12,7 @@ init(Req, Opts) ->
     #{a := Action} = cowboy_req:match_qs([a], Req),
     ReqCors =
         case cg:env() of
-            ?ENV_PROD -> Req;
+            ?ENV_PROD -> cowboy_req:set_resp_header(<<"access-control-allow-origin">>, <<$*>>, Req);
             _ -> cowboy_req:set_resp_header(<<"access-control-allow-origin">>, <<$*>>, Req)
         end,
     Req2 =

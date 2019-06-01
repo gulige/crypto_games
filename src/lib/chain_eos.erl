@@ -296,7 +296,7 @@ call_contract(Contract, Action, Args, Executor) ->
             case string:tokens(Res, " ") of
                 ["executed", "transaction:", TxId | _] ->
                     list_to_binary(TxId);
-                [_, Code | _] when Code =:= "3120002:"; Code =:= "3120003:"; Code =:= "3120004:" ->
+                [_, Code | _] when Code =:= "3120002:"; Code =:= "3120003:"; Code =:= "3120004:"; Code =:= "3120006:" ->
                     make_sure_usable(),
                     call_contract(Contract, Action, Args, Executor);
                 [_, Code | _] when Code =:= "3040005:" -> % expired transaction

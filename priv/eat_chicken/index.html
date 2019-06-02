@@ -46,6 +46,20 @@
     
  
 <script>
+    let hallImage = new Image()
+    let mainNode = document.getElementById("eat_chicken")
+    if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+        //alert('手机端')
+        mainNode.setAttribute("style", "margin: atuo;width: 100%;height: 100%; background-image: url(resource/assets/bg-m.jpg); background-size:auto 100% ;background-repeat:no-repeat; background-position:center;")
+    }else{
+        //alert('PC端')      
+         mainNode.setAttribute("style", "margin: atuo;width: 100%;height: 100%; background-image: url(resource/assets/bg-small.jpg); background-size:auto 100% ;background-repeat:no-repeat; background-position:center;")     
+         hallImage.onload = ()=>{
+            mainNode.setAttribute("style", "margin: atuo;width: 100%;height: 100%; background-image: url(resource/assets/bg.jpg); background-size:auto 100% ;background-repeat:no-repeat; background-position:center;")
+        }
+        hallImage.src = "resource/assets/bg.jpg"
+    }
+    
     var loadScript = function (list, callback) {
         var loaded = 0;
         var loadNext = function () {
@@ -101,19 +115,7 @@
     });
     xhr.send(null);
 
-    let hallImage = new Image()
-    let mainNode = document.getElementById("eat_chicken")
-    if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
-        //alert('手机端')
-        mainNode.setAttribute("style", "margin: atuo;width: 100%;height: 100%; background-image: url(resource/assets/bg-m.jpg); background-size:auto 100% ;background-repeat:no-repeat; background-position:center;")
-    }else{
-        //alert('PC端')      
-         mainNode.setAttribute("style", "margin: atuo;width: 100%;height: 100%; background-image: url(resource/assets/bg-small.jpg); background-size:auto 100% ;background-repeat:no-repeat; background-position:center;")     
-         hallImage.onload = ()=>{
-            mainNode.setAttribute("style", "margin: atuo;width: 100%;height: 100%; background-image: url(resource/assets/bg.jpg); background-size:auto 100% ;background-repeat:no-repeat; background-position:center;")
-        }
-        hallImage.src = "resource/assets/bg.jpg"
-}
+    
 
 
     let locale = localStorage.getItem("eatchicken_locale")  

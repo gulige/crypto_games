@@ -311,6 +311,10 @@ call_contract(Contract, Action, Args, Executor) ->
                 [_, Code | _] when Code =:= "3040008:" -> % duplicate transaction
                     ?INFO("call_contract error: ~p~ntry again...~n", [Res]),
                     call_contract(Contract, Action, Args, Executor);
+                [_, Code | _] when Code =:= "3081001:" -> % transaction reached the deadline set due to leeway on account CPU limits
+                    % the transaction was unable to complete by deadline, but it is possible it could have succeeded if it were allowed to run to completion
+                    ?INFO("call_contract error: ~p~ncontinue...~n", [Res]),
+                    continue;
                 [_, Code | _] ->
                     {error, Res}
             end

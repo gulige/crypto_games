@@ -77,6 +77,43 @@ do_start_tick_workers(FromGameId) ->
     end.
 
 do_tick(GameId) ->
+    NeedGetTable =
+        case get(kick_off) of
+            true -> false;
+            _ -> true
+        end,
+    case NeedGetTable of
+        true ->
+            Account = get_account(),
+            case chain_eos:get_table(Account, Account, <<"games">>, <<"game_id">>, GameId, 1) of
+                {[], _} -> {error, "game not found"};
+                {[#{<<"game_id">> := GameId, <<"game_progress">> := Progress}], false} ->
+                    NeedTick =
+                        case Progress =:= 1 of
+                            true -> % 在kickoff前半小时tick一次
+                                OldCount =
+                                    case get(count) of
+                                        undefined -> 0;
+                                        C -> C
+                                    end,
+                                NewCount = OldCount + 1,
+                                put(count, NewCount),
+                                NewCount rem 60 =:= 0;
+                            false ->
+                                put(kick_off, true),
+                                true
+                        end,
+                    case NeedTick of
+                        true ->
+                            do_tick_(GameId);
+                        false -> skip
+                    end
+            end;
+        false ->
+            do_tick_(GameId)
+    end.
+
+do_tick_(GameId) ->
     GameIdBin = integer_to_binary(GameId),
     Account = get_account(),
     chain_eos:call_contract(

@@ -87,7 +87,7 @@ do_tick(GameId) ->
             Account = get_account(),
             case chain_eos:get_table(Account, Account, <<"games">>, <<"game_id">>, GameId, 1) of
                 {[], _} -> {error, "game not found"};
-                {[#{<<"game_id">> := GameId, <<"game_progress">> := Progress}], false} ->
+                {[#{<<"game_id">> := GameId, <<"game_progress">> := Progress}], _} ->
                     NeedTick =
                         case Progress =:= 1 of
                             true -> % 在kickoff前半小时tick一次

@@ -336,7 +336,7 @@ get_table(Contract, Executor, Table, Key, Lower, Limit) ->
     CmdBin = <<"cleos --url ", Url/binary, " get table ", Contract/binary, " ", Executor/binary, " ", Table/binary, " -k ", Key/binary, " -L ", LowerBin/binary, " -U ", UpperBin/binary, " -l ", LimitBin/binary>>,
     ?DBG("get_table: cmd=~s~n", [CmdBin]),
     Res = os:cmd(binary_to_list(CmdBin)),
-    #{<<"rows">> := Rows, <<"more">> := More} = jiffy:decode(Res, [return_maps]),
+    #{<<"rows">> := Rows, <<"more">> := More} = jiffy:decode(unicode:characters_to_binary(Res,utf8), [return_maps]),
     {Rows, More}.
 
 now() ->

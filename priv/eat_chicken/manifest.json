@@ -13,9 +13,10 @@
 		"js/scatter-plugin-tron.min_59421656.js",
 		"js/eos.min_74eed8f6.js",
 		"js/web3.min_ca43e674.js",
-		"js/TronWeb.min_c85d8be8.js"
+		"js/TronWeb.min_c85d8be8.js",
+		"js/mouse.min_c171ee8c.js"
 	],
 	"game": [
-		"js/main.min_76d1fa22.js"
+		"js/main.min_2fa7f29c.js"
 	]
 }

@@ -7,8 +7,8 @@
 		"js/assetsmanager.min_f2e50bd1.js",
 		"js/promise.min_83a6a5d.js",
 		"js/tiled.min_afe36081.js",
-		"js/scatter.min_bde3b56e.js",
-		"js/scatter-plugin-eos.min_3aca5ca5.js",
+		"js/scatter.min_a3a9d4e2.js",
+		"js/scatter-plugin-eos.min_1bfbfb6d.js",
 		"js/scatter-plugin-web3.min_46d78ffc.js",
 		"js/scatter-plugin-tron.min_59421656.js",
 		"js/eos.min_74eed8f6.js",
@@ -17,6 +17,6 @@
 		"js/mouse.min_c171ee8c.js"
 	],
 	"game": [
-		"js/main.min_e75f11b2.js"
+		"js/main.min_b4c56b30.js"
 	]
 }
